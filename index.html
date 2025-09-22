@@ -43,6 +43,24 @@
       margin: 20px 0;
       font-size: 1.1rem;
     }
+    .btn-download {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 25px 0 15px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+    }
+    .btn-download:hover {
+      background: #c0392b;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+    }
     section {
       margin-bottom: 50px;
     }
@@ -108,20 +126,6 @@
       color: #7f8c8d;
       font-size: 0.95rem;
     }
-    .btn-download {
-      display: inline-block;
-      background: #4a6fa5;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 20px 0;
-      transition: background 0.3s;
-    }
-    .btn-download:hover {
-      background: #3a5a80;
-    }
     @media (max-width: 768px) {
       .container {
         margin: 20px;
@@ -129,6 +133,10 @@
       }
       h1 {
         font-size: 2.2rem;
+      }
+      .btn-download {
+        padding: 12px 25px;
+        font-size: 1rem;
       }
     }
   </style>
@@ -143,8 +151,9 @@
         📞 <strong>0822-2351-7367</strong> | ✉️ <strong>wahyuusyahbanii@gmail.com</strong><br>
         📍 Cipedak, Jagakarsa, Jakarta Selatan | <a href="https://github.com/wsyahbanii" target="_blank">@wsyahbanii</a>
       </div>
-      <!-- Opsional: tambahkan tombol download CV jika punya PDF -->
-      <!-- <a href="#" class="btn-download">📥 Download CV Saya (PDF)</a> -->
+
+      <!-- 🔴 TOMBOL DOWNLOAD CV -->
+      <a href="https://docs.google.com/document/d/1ckAUSitanm7LX13LJ0Ld_-M2aT_FM0Vma8e7ON90gAY/edit?usp=sharing" target="_blank" class="btn-download">📥 Download CV Saya (PDF)</a>
     </header>
 
     <section>
