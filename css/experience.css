@@ -96,7 +96,7 @@ body,html {
             border: 1px solid #a58c00;
             padding: 10px;
             border-radius: 30px;
-            z-index: 1;
+            z-index: 0;
             font-size: 10px;
             height: auto;
             width: auto;
@@ -111,7 +111,7 @@ body,html {
             border: 1px solid #a58c00;
             padding: 10px;
             border-radius: 30px;
-            z-index: 1;
+            z-index: 0;
             font-size: 10px;
             height: auto;
             width: auto;
@@ -126,7 +126,7 @@ body,html {
             border: 1px solid #a58c00;
             padding: 10px;
             border-radius: 30px;
-            z-index: 1;
+            z-index: 0;
             font-size: 10px;
             height: auto;
             width: auto;
@@ -311,4 +311,5 @@ body,html {
     }
     .menu:hover .bar3 {
         background-color: #f1f1f1;
+
     }
