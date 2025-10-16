@@ -1,0 +1,295 @@
+/* barrio-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Barrio';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/barrio-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+* {
+  font-family: 'Barrio';
+}
+body,html {
+  width:1270px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background-color: #191919;
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  align-self: start;
+}
+.header {
+  display: flex;
+  height: 100px;
+  width:1270px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.container {
+  display: flex; 
+  justify-self: start;
+  width:auto;
+  height: 150px;
+  margin-bottom: 150px;
+  box-sizing: border-box;
+}
+.container2 {
+  display: flex; 
+  justify-self: start;
+  width:auto;
+  height:200px;
+  flex-direction:row;
+  box-sizing: border-box;
+}
+
+.container h1 {
+  color: #a58c00;
+  font-size: 90px;
+  padding-left: 50px;
+  margin: 0;
+  text-decoration: underline 2px;
+  text-underline-offset: 12px;
+  -webkit-text-fill-color: #191919; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #a58c00;
+}
+.container p {
+  color: #a58c00;
+  font-size: 16px;
+  width: 100%;
+  padding-left: 50px;
+  margin: 0;
+}
+.foter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width:1270px;
+  box-sizing: content-box;
+  flex-direction: column-reverse;
+  color:#a58c00
+}
+
+.ig-in {
+    width: 50px;
+    object-fit: cover;
+}
+    .ig-out img{
+        display: flex;
+        width:100%;
+    }
+    .ig{
+        position: relative;
+        float: right;
+        width: auto;
+    }
+    .ig .ig-out img{
+        visibility:hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+
+    .ig:hover .ig-out img {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+    .container2 .ig{
+      margin-left: 49px;
+    }
+
+.email-in {
+  width: 50px;
+  object-fit: cover;
+}
+    .email-out img{
+        display: flex;
+        width: 100%;
+
+    }
+    .email{
+        width: auto;
+        position: relative;
+        float: right;
+    }
+    .email .email-out img{
+        visibility:hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+    .email:hover .email-out img {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+.id-in {
+  width: 50px;
+  object-fit: cover;
+}
+  .id-out img{
+    display: flex;
+    width: 100%;
+    
+  }
+  .id{
+    width: auto;
+    position: relative;
+    float: right;
+  }
+  .id .id-out img{
+    visibility:hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+  .id:hover .id-out img {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+.funky-in {
+    width: 500px;
+    object-fit: cover;
+  }
+    .funky-out img{
+      display: flex;
+      width: 100%;
+    }
+    .funky{
+      display:flex;
+      justify-self: center;
+      margin-top: -50px;
+      margin-left: 150px;
+      flex-direction: row ;
+      width: auto;
+
+      position: relative;
+      float: right;
+    }
+    .funky .funky-out img{
+      visibility:hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
+    }
+    .funky:hover .funky-out img {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+.git-in {
+    width: 50px;
+    object-fit: cover;
+  }
+    .git-out img{
+      display: flex;
+      width: 100%;
+      
+    }
+    .git{
+      width: auto;
+      position: relative;
+      float: right;
+    }
+    .git .git-out img{
+      visibility:hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.5s linear;
+    }
+    .git:hover .git-out img {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+.logo{
+  place-self: start;
+  cursor: pointer;
+  width: auto;
+  height: 70%;
+  border-radius: 0;
+  margin-left: 25px;
+  margin-top: 18px;
+} 
+/*MAIN MENU*/
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #a58c00;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/*ICON MENU*/
+.menu {
+  display: inline-block;
+  cursor: pointer;
+  place-self: start;
+  margin-right: 53px;
+  margin-top: 42px;
+  }
+
+  .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: #a58c00;
+      margin: 6px 0;
+      transition: 0.4s;
+      }
+  .menu:hover .bar1 {
+      background-color: #f1f1f1;
+      }
+  .menu:hover .bar2 {
+      background-color: #f1f1f1;
+  }
+  .menu:hover .bar3 {
+      background-color: #f1f1f1;
+  }
