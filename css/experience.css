@@ -19,11 +19,13 @@ body,html {
     font-family: Arial, sans-serif;
 }
 .header h1 {
+    display: flex;
+    position: relative;
+    margin-left: 400px;
     align-self: end;
     font-weight: bold;
     text-align: center;
-    width: 100%;
-    position: relative;
+    width: 1270px;
     z-index: 1;
 }
 
