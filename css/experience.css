@@ -50,6 +50,7 @@ body,html {
     width: 470px;
     flex-direction: column;
     height: auto;
+    z-index: 0;
     padding: 20px;
     background-image: linear-gradient(to right, rgba(25,25,25,255), rgba(31,41,54,255));
     transition-duration: 0.3s ;
@@ -313,4 +314,5 @@ body,html {
         background-color: #f1f1f1;
 
     }
+
 
