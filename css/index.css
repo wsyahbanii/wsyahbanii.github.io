@@ -6,6 +6,8 @@ body,html {
     padding: 0;
     justify-content: center;
     align-self: start;
+    max-width: 100%;
+    overflow-x: hidden !important;
 }
 .header {
     display: flex;
@@ -246,4 +248,154 @@ img {
         background-color: #f1f1f1;
     }
 
-    
+  /* Tablet view */
+  @media (max-width: 600px) {
+
+    /* BODY */
+    body, html {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: #191919;
+        font-family: Arial, sans-serif;
+        display: block;
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
+    /* HEADER */
+    .header {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        margin-bottom: 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* LOGO */
+    .logo {
+        width: 60px;
+        height: auto;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    /* ICON MENU */
+    .menu {
+        margin-right: 40px;
+        margin-top: 10px;
+        transform: scale(0.8);
+        position: relative;
+    }
+    .bar1, .bar2, .bar3 {
+        width: 25px;
+        height: 4px;
+    }
+
+    /* OVERLAY MENU */
+    .overlay a {
+        font-size: 25px;
+    }
+    .overlay .closebtn {
+        top: 5px;
+        right: 20px;
+        font-size: 45px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: center;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    /* GAMBAR */
+    .boxgambar {
+        width: 50%;
+        height: auto;
+        margin: 10px auto;
+        border-radius: 0px;
+    }
+    .gambarmasuk img{
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+    .gambar img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+    /* ISI TEKS */
+    .isi {
+        padding-top: 20px;
+        margin: 0;
+        width: 100%;
+        text-align: left;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 22px;
+        align-self: center;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    p {
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.5;
+        padding: 0 10px;
+        text-align: justify;
+        margin-right: 50px;
+        margin-left:50px;
+    }
+
+    /* FADING EFFECT */
+    .row1 {
+        width: 100%;
+        height: 250px;
+        top: -250px;
+        background: #191919;
+        position: relative;
+        justify-content:start;
+        flex-direction: column;
+    }
+
+    .row1:before {
+        width: 100%;
+        height: 20%;
+        top: -50px;
+
+    }
+
+    /* TOMBOL SHOW MORE / LESS */
+    .tombol11, .tombol22 {
+        width: 120px;
+        height: auto;
+        padding: 10px;
+        font-size: 14px;
+        margin-top: 10px;
+        align-self: center;
+        justify-content: center;
+    }
+
+    /* FOOTER */
+    .foter {
+        width: 100%;
+        position:fixed;
+        bottom:0;
+        height: auto;
+    }
+    .foter p {
+        font-size: 12px;
+        text-align: center;
+    }
+}
