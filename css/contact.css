@@ -10,7 +10,7 @@
   font-family: 'Barrio';
 }
 body,html {
-  width:1270px;
+  width:100%;
   height: auto;
   margin: 0;
   padding: 0;
@@ -22,14 +22,14 @@ body,html {
 .header {
     display: flex;
     height: 100px;
-    width:1270px;
+    width:100%;
     margin-bottom: 50px;
     align-items: flex-start;
     justify-content: space-between;
   }
 .container {
   display: flex; 
-  justify-self: start;
+  justify-self: center;
   width:auto;
   height: 90px;
   margin-bottom: 150px;
@@ -39,7 +39,7 @@ body,html {
   display: flex; 
   position: relative;
   top: -70px;
-  left: -5px;
+  left: 17%;
   justify-self: start;
   width:auto;
   height:200px;
@@ -72,7 +72,7 @@ body,html {
   justify-content: center;
   align-items: center;
   height: 30px;
-  width:1270px;
+  width:100%;
   box-sizing: content-box;
   flex-direction: column-reverse;
   color:#a58c00

@@ -1,5 +1,5 @@
 body,html {
-    width:1270px;
+    width:100%;
     background-color: #191919;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,7 +12,7 @@ body,html {
 .header {
     display: flex;
     height: 100px;
-    width:1270px;
+    width:100%;
     margin-bottom: 50px;
     align-items: flex-start;
     justify-content: space-between;
@@ -32,7 +32,7 @@ body,html {
     justify-content: center;
     align-items: center;
     height: 30px;
-    width:1270px;
+    width:100%;
     box-sizing: content-box;
     margin-top: 50px;
     flex-direction: column-reverse;
@@ -391,6 +391,7 @@ img {
     .foter {
         width: 100%;
         position:fixed;
+        background-color: #191919;
         bottom:0;
         height: auto;
     }

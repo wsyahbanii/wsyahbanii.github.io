@@ -1,5 +1,5 @@
 body,html {
-    width:1270px;
+    width:100%;
     background-color: #191919;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body,html {
     display: flex;
     justify-content: auto;
     height: 100px;
-    width:1270px;
+    width:100%;
     color: #a58c00;
     flex-direction: row-reverse;
     margin-bottom: 50px;   
@@ -21,11 +21,11 @@ body,html {
 .header h1 {
     display: flex;
     position: relative;
-    margin-left: 400px;
     align-self: end;
     font-weight: bold;
+    justify-content: center;
     text-align: center;
-    width: 1270px;
+    width: 100%;
     z-index: 1;
 }
 
@@ -384,7 +384,7 @@ body,html {
 
     /* CONTAINER */
     .container {
-        width: 90%;
+        width: 85%;
         padding: 0px;
         margin-left: 0;
         padding-right: 0;
@@ -460,6 +460,14 @@ body,html {
     .foter {
         width: 100%;
         margin-top: 30px;
+        text-align: center;
+        position:fixed;
+        background-color: #191919;
+        bottom:0;
+        height: auto;
+    }
+    .foter p {
+        font-size: 12px;
         text-align: center;
     }
 }
