@@ -1,0 +1,247 @@
+/* ... (Bagian CSS Variables, Loader, dan Sidebar SAMA seperti sebelumnya) ... */
+/* Langsung copy paste bagian atas dari file sebelumnya jika belum ada, 
+   di bawah ini adalah bagian yang DIMODIFIKASI untuk Foto Profil */
+
+:root {
+    --bg: #050505; --text: #ffffff; --gray: #333333; --subtext: #888888;
+    --font-body: 'Manrope', sans-serif; --font-header: 'Syncopate', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    cursor: none !important;
+}
+body { background-color: var(--bg); color: var(--text); font-family: var(--font-body); overflow-x: hidden; }
+
+/* ... (Kode Sidebar & Loader dilewati agar hemat tempat, pakai yg lama) ... */
+
+/* =========================================
+   MODIFIKASI PROFILE IMAGE (STACKING)
+   ========================================= */
+.about-feed {
+    width: 60%;
+    padding: 80px 10%;
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.profile-image {
+    width: 100%;           /* Lebar mengikuti container parent */
+    
+    /* KUNCI UTAMA DI SINI: */
+    aspect-ratio: 1 / 1;   /* Memaksa bentuk menjadi Kotak (1:1) */
+    height: auto;          /* Tinggi otomatis menyesuaikan lebar */
+    
+    margin-bottom: 50px;
+    position: relative;    /* Wajib relative */
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* Memastikan gambar penuh mengisi kotak */
+    transition: opacity 0.5s ease-in-out, transform 0.7s ease;
+}
+/* GAMBAR 1 (Posisi Bawah/Default) */
+.profile-image img:first-child {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 1;
+    opacity: 1;
+    filter: grayscale(100%) contrast(120%); /* Hitam Putih Awal */
+}
+
+/* GAMBAR 2 (Posisi Atas/Hover) */
+.profile-image img:nth-child(2) {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 2;
+    opacity: 0; /* Sembunyi Dulu */
+    filter: grayscale(0%); /* Berwarna (jika gambarnya berwarna) */
+}
+
+/* SCAN LINE (Paling Atas) */
+.scan-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: scan 3s linear infinite;
+    z-index: 10; /* Z-Index Tertinggi agar tidak tertutup gambar 2 */
+    pointer-events: none; /* Agar tidak mengganggu hover mouse */
+}
+
+/* =========================================
+   CONTACT FORM STYLING
+   ========================================= */
+.contact-section {
+    margin-bottom: 60px;
+    border-top: 1px solid var(--gray);
+    padding-top: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 10px 0;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mengubah warna teks input (placeholder) */
+.contact-form .form-group input::placeholder,
+.contact-form .form-group textarea::placeholder {
+    color: var(--subtext);
+    letter-spacing: 1px;
+}
+
+/* Efek garis bawah menyala saat diklik (fokus) */
+.contact-form .form-group input:focus,
+.contact-form .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: #00fff9; /* Warna cyan glitch */
+}
+
+.contact-form .form-group textarea {
+    resize: vertical;
+    min-height: 40px;
+}
+
+.submit-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--gray);
+    color: var(--subtext);
+    padding: 12px 24px;
+    font-family: var(--font-header);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+/* Efek hover pada tombol kirim */
+.submit-btn:hover {
+    color: var(--bg);
+    background: var(--text);
+    border-color: var(--text);
+    transform: translateX(5px); /* Sedikit bergeser ke kanan */
+}
+
+/* =========================================
+   POPUP NOTIFICATION STYLING
+   ========================================= */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 5, 5, 0.9); /* Latar belakang transparan gelap */
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+/* Class pembantu untuk memunculkan popup dari JavaScript */
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-box {
+    background: var(--bg);
+    border: 1px solid var(--gray);
+    padding: 40px;
+    text-align: center;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup-overlay.show .popup-box {
+    transform: translateY(0);
+}
+
+.popup-box h3 {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: #00fff9; /* Warna cyan glitch */
+}
+
+.popup-box p {
+    font-size: 0.9rem;
+    color: var(--subtext);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   CUSTOM CURSOR (GLOBAL)
+   ========================================= */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.2s ease, background 0.2s ease;
+    mix-blend-mode: difference; /* Kursor berubah warna otomatis menembus background */
+}
+
+.cursor-hover {
+    transform: scale(3);
+    background: var(--text);
+}
+
+@keyframes scan { 0% { top: 0%; opacity: 0; } 50% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+/* ... (Sisa CSS Bio Text, Grid Specs, dll tetap SAMA) ... */
+.bio-text p { font-size: 1rem; line-height: 1.8; color: #ccc; margin-bottom: 20px; text-align: justify; }
+.section-title { font-family: var(--font-header); font-size: 1.5rem; margin-bottom: 20px; letter-spacing: 3px; }
+.specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; border-top: 1px solid var(--gray); padding-top: 40px; margin-bottom: 60px; }
+.spec-item h3 { font-family: var(--font-header); font-size: 0.8rem; color: var(--subtext); margin-bottom: 10px; }
+.spec-item p { font-size: 0.9rem; line-height: 1.6; }
+.quote-box { border: 1px solid var(--gray); padding: 40px; text-align: center; font-family: var(--font-header); font-size: 0.9rem; letter-spacing: 2px; color: var(--subtext); }
+.reveal-element { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+.reveal-element.visible { opacity: 1; transform: translateY(0);}
+
+
+.container { display: flex; min-height: 100vh; }
+.sidebar { width: 40%; height: 100vh; position: sticky; top: 0; padding: 60px; border-right: 1px solid var(--gray); background: var(--bg); display: flex; flex-direction: column; justify-content: space-between; z-index: 20;}
+.loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; animation: fadeOut 1.5s ease-in-out forwards; animation-delay: 0.5s; pointer-events: none; }
+.loader-text { font-family: var(--font-header); font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; animation: blink 0.2s infinite; }
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } } @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.back-link { text-decoration: none; color: var(--subtext); font-family: var(--font-header); font-size: 0.8rem; letter-spacing: 2px; transition: color 0.3s; }
+.back-link:hover { color: var(--text); }
+.logo { font-family: var(--font-header); font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; }
+.main-title { font-family: var(--font-header); font-size: 3vw; line-height: 1.1; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+.social-links a { display: block; margin-bottom: 12px; color: var(--subtext); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.social-links a:hover { color: var(--text); padding-left: 10px; }
+.glitch-wrapper { position: relative; display: inline-block; }
+.glitch { position: relative; color: var(--text); }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); }
+.glitch:hover::before { animation: glitch-anim 0.3s infinite; left: 2px; text-shadow: -1px 0 #ff00c1; clip-path: inset(44% 0 61% 0); }
+.glitch:hover::after { animation: glitch-anim2 0.3s infinite; left: -2px; text-shadow: -1px 0 #00fff9; clip-path: inset(54% 0 10% 0); }
+@keyframes glitch-anim { 0% { clip-path: inset(30% 0 40% 0); } 100% { clip-path: inset(70% 0 5% 0); } }
+@keyframes glitch-anim2 { 0% { clip-path: inset(10% 0 60% 0); } 100% { clip-path: inset(40% 0 20% 0); } }
+@media (max-width: 900px) { .container { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border-bottom: 1px solid var(--gray); border-right: none; } .about-feed { width: 100%; padding: 60px 20px; } .specs-grid { grid-template-columns: 1fr; } }
+

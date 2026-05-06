@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE // WAHYU SYAHBANI</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+<body>
+
+    <div class="loader">
+        <div class="loader-text">loading profile...</div>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="top">
+                <a href="../index.html" class="back-link">&larr; RETURN TO ARCHIVE</a>
+                <br><br><br>
+                
+                <div class="logo">WS</div>
+                <br>
+                <div class="glitch-wrapper">
+                    <h1 class="main-title glitch" data-text="PROFILE">PROFILE</h1>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.instagram.com/wsyahbanii" target="_blank">Instagram -></a>
+                <a href="https://github.com/wsyahbanii" target="_blank">GitHub -></a>
+                <a href="https://www.linkedin.com/in/wsyahbanii" target="_blank">LinkedIn -></a>
+            </div>
+        </aside>
+
+        <main class="about-feed">
+
+
+            <div class="bio-text reveal-element">
+                <h2 class="section-title">THE OBSERVER</h2>
+                <p>
+                    I am an Informatics Engineering student at Pamulang University, currently in my 4th semester. I have a deep interest in programming, technology, and the creative arts. My journey involves exploring the intersection of technical logic and visual design to build impactful digital experiences.
+                </p>
+                <p>
+                    With a foundation in Computer and Network Engineering and professional experience in technical and logistics roles, I’ve developed a disciplined work ethic and a collaborative mindset. I thrive in fast-paced environments where continuous learning is key.
+                </p>
+                <p>
+                    I created this website as a medium to share my work, documentation of learning, and a place to develop with technology.
+                </p>
+            </div>
+
+            <div class="specs-grid reveal-element">
+                <div class="spec-item">
+                    <h3>FOCUS</h3>
+                    <p>UI/UX Design.<br>Web Development<br>Learning Cybersecurity</p>
+                </div>
+                <div class="spec-item">
+                    <h3>TOOLS</h3>
+                    <p>Python<br>HTML/CSS<br>JavaScript<br>MySQL</p>
+                </div>
+                <div class="spec-item">
+                    <h3>BASE</h3>
+                    <p>Jakarta,<br>Indonesia</p>
+                </div>
+            </div>
+
+            <!-- BAGIAN CONTACT ME MULAI -->
+            <div class="contact-section reveal-element">
+                <h2 class="section-title">TRANSMISSION // CONTACT</h2>
+                <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 30px;">
+                        Leave a message, feedback, or just a quick note. This message will be sent directly to my inbox.                </p>
+                
+                <!-- Ganti action URL dengan endpoint Formspree Anda -->
+                <form id="contactForm" action="https://formspree.io/f/mdabzwvn" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="EMAIL // BALASAN (OPSIONAL)" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="PESAN // FREKUENSI..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">KIRIM SINYAL -></button>
+                </form>
+            </div>
+
+            <div class="quote-box reveal-element">
+                "We are just static noise in a beautiful universe."
+            </div>
+
+            <footer>
+                <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
+                    // SYSTEM STATUS: ONLINE //
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- KODE POP-UP NOTIFIKASI -->
+    <div id="successPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h3>TRANSMISSION SENT</h3>
+            <p>The signal has been received. Your message has been lost in the void.</p>
+            <button id="closePopup" class="submit-btn">TUTUP</button>
+        </div>
+    </div>
+
+    <div class="custom-cursor"></div>
+
+    <script src="../js/about.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+/* Efek Noise Statis */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05; /* Sangat tipis */
+    pointer-events: none;
+    z-index: 9999;
+}
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.2s ease, background 0.2s ease;
+    mix-blend-mode: difference; /* Kursor akan berubah warna tergantung background */
+}
+
+.cursor-hover {
+    transform: scale(3);
+    background: var(--text);
+}
+.system-meta {
+    margin-top: 30px;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--subtext);
+}
+
+.dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #00ff00; /* Hijau neon */
+    border-radius: 50%;
+    margin-right: 5px;
+    box-shadow: 0 0 5px #00ff00;
+}   
+:root {
+    --bg: #050505;       /* Hitam pekat */
+    --text: #ffffff;     /* Putih */
+    --gray: #333333;     /* Abu-abu gelap untuk garis */
+    --subtext: #888888;  /* Abu-abu terang untuk deskripsi */
+    --font-body: 'Manrope', sans-serif;
+    --font-header: 'Syncopate', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    cursor: none !important;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   2. PRELOADER
+   ========================================= */
+.loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+    pointer-events: none;
+}
+
+.loader-text {
+    font-family: var(--font-header);
+    font-size: 1rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    animation: blink 0.2s infinite;
+}
+
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* =========================================
+   3. MAIN LAYOUT
+   ========================================= */
+.container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.sidebar {
+    width: 40%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--gray);
+    background: var(--bg);
+    z-index: 10;
+}
+
+.logo {
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.main-title {
+    font-family: var(--font-header);
+    font-size: 3.5vw;
+    line-height: 1.1;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: default;
+    margin-bottom: 20px;
+}
+
+.sidebar p {
+    font-size: 0.9rem;
+    color: var(--subtext);
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+.social-links a {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--subtext);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-links a:hover {
+    color: var(--text);
+    padding-left: 10px;
+}
+
+/* =========================================
+   4. GLITCH EFFECT
+   ========================================= */
+.glitch-wrapper { position: relative; display: inline-block; }
+.glitch { position: relative; color: var(--text); }
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg);
+}
+
+.glitch:hover::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip-path: inset(44% 0 61% 0);
+    animation: glitch-anim 0.3s infinite linear alternate-reverse;
+}
+
+.glitch:hover::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip-path: inset(54% 0 10% 0);
+    animation: glitch-anim2 0.3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip-path: inset(30% 0 40% 0); }
+    100% { clip-path: inset(70% 0 5% 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    100% { clip-path: inset(40% 0 20% 0); }
+}
+
+/* =========================================
+   5. GALLERY FEED
+   ========================================= */
+.gallery-feed {
+    width: 60%;
+    padding: 100px 10%;
+}
+
+.art-card {
+    margin-bottom: 150px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+    width: 100%;
+}
+
+.art-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-frame {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.image-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease-in-out, transform 0.7s ease, filter 0.5s ease;
+}
+
+/* KHUSUS UNTUK FRAME YANG PUNYA 2 GAMBAR */
+/* Gambar Bawah (Default) */
+.image-frame img:first-child {
+    position: relative;
+    z-index: 1;
+    filter: grayscale(100%) contrast(110%);
+}
+
+/* Gambar Atas (Hover) - Jika ada */
+.image-frame img:nth-child(2) {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 2;
+    opacity: 0; /* Tersembunyi */
+    filter: grayscale(0%);
+}
+
+/* Hover effects via CSS fallback (JS will override this for smoother logic) */
+.image-frame:hover img:first-child { transform: scale(1.02); }
+.image-frame:hover img:nth-child(2) { transform: scale(1.02); }
+
+/* =========================================
+   6. ART INFO & RESPONSIVE
+   ========================================= */
+.art-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--gray);
+    width: 100%;
+    padding-top: 15px;
+}
+
+.art-title {
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.art-meta {
+    font-size: 0.75rem;
+    color: var(--subtext);
+    text-align: right;
+    line-height: 1.4;
+    font-weight: 300;
+}
+
+footer p { opacity: 0.5; letter-spacing: 2px; }
+
+@media (max-width: 900px) {
+    .container { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-bottom: 1px solid var(--gray); border-right: none; }
+    .main-title { font-size: 3rem; margin-top: 20px; }
+    .gallery-feed { width: 100%; padding: 60px 20px; }
+    .art-card { margin-bottom: 80px; }
+}
+
+/* =========================================
+   COOKIE CONSENT BANNER STYLING
+   ========================================= */
+.cookie-banner {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 320px;
+    background-color: var(--bg);
+    border: 1px solid var(--gray);
+    padding: 25px;
+    z-index: 10000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    /* Posisi awal sembunyi di bawah layar */
+    transform: translateY(150%); 
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Class pembantu untuk memunculkan banner */
+.cookie-banner.show {
+    transform: translateY(0);
+}
+
+.cookie-content strong {
+    font-family: var(--font-header);
+    font-size: 0.9rem;
+    color: var(--text);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cookie-content p {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--subtext);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-cookie {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--gray);
+    padding: 10px;
+    font-family: var(--font-header);
+    font-size: 0.7rem;
+    cursor: pointer;
+    color: var(--subtext);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.btn-cookie.accept:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.btn-cookie.decline:hover {
+    color: #ff00c1; /* Warna pink glitch */
+    border-color: #ff00c1;
+}
+.cookie-banner.show {
+    transform: translateY(0) !important;
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 600px) {
+    .cookie-banner {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        border-bottom: none;
+        border-right: none;
+        border-left: none;
+    }
+}
