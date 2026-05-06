@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YC9Z1M9G2D');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY WEB // WAHYU SYAHBANI</title>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YC9Z1M9G2D');
+    </script>
     
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- EXTERNAL CSS -->
     <!-- Menggunakan CSS yang sama dengan about page agar konsisten -->
     <link rel="stylesheet" href="../css/about.css">
+    
+    <!-- INTERNAL CSS FOR PROJECT GRID -->
     <style>
-        /* Tambahan styling khusus untuk grid project */
         .project-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -66,34 +69,36 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        /* =========================================
-   CUSTOM CURSOR (GLOBAL)
-   ========================================= */
-.custom-cursor {
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--text);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transition: transform 0.2s ease, background 0.2s ease;
-    mix-blend-mode: difference; /* Kursor berubah warna otomatis menembus background */
-}
-
-.cursor-hover {
-    transform: scale(3);
-    background: var(--text);
-}
+        
+        /* CUSTOM CURSOR (GLOBAL) */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--text);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.2s ease, background 0.2s ease;
+            mix-blend-mode: difference; /* Kursor berubah warna otomatis menembus background */
+        }
+        .cursor-hover {
+            transform: scale(3);
+            background: var(--text);
+        }
     </style>
 </head>
 <body>
 
+    <!-- LOADER -->
     <div class="loader">
         <div class="loader-text">loading webworks...</div>
     </div>
 
+    <!-- MAIN CONTAINER -->
     <div class="container">
+        
+        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="top">
                 <a href="../index.html" class="back-link">&larr; RETURN TO ARCHIVE</a>
@@ -111,8 +116,10 @@
             </div>
         </aside>
 
+        <!-- MAIN CONTENT -->
         <main class="about-feed">
             
+            <!-- BIO SECTION -->
             <div class="bio-text reveal-element">
                 <h2 class="section-title">WEB PORTFOLIO</h2>
                 <p>
@@ -120,6 +127,7 @@
                 </p>
             </div>
 
+            <!-- PROJECT GRID SECTION -->
             <div class="project-grid reveal-element">
                 
                 <!-- Project 1 -->
@@ -138,6 +146,7 @@
 
             </div>
 
+            <!-- FOOTER -->
             <footer>
                 <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
                     // SYSTEM STATUS: ONLINE //
@@ -147,8 +156,10 @@
         </main>
     </div>
 
+    <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
 
+    <!-- JAVASCRIPT -->
     <script src="../js/about.js"></script>
 </body>
 </html>
