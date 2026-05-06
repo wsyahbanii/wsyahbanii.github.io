@@ -1,4 +1,5 @@
 {
+  "id": "/?source=pwa",
   "name": "W // SYAHBANII DIGITAL ARCHIVE",
   "short_name": "WS Archive",
   "description": "Digital Archive & Visual Storytelling Portfolio. Exploring the intersection of technical logic and monochrome brutalist design.",
@@ -23,18 +24,25 @@
   ],
   "screenshots": [
     {
-      "src": "https://i.imgur.com/12zFJum.png",
-      "sizes": "1881x852",
+      "src": "https://imgur.com/gallery/home-UGJfXFw#VtEe4Ie",
+      "sizes": "1920x1080",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Home Screen Archive"
     },
     {
-      "src": "https://i.imgur.com/k0JDKGi.png",
-      "sizes": "1881x852",
+      "src": "https://imgur.com/gallery/home-UGJfXFw#txDz0JW",
+      "sizes": "1920x1080",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "System Profile"
+      "label": "My Website"
+    },
+        {
+      "src": "https://imgur.com/gallery/home-UGJfXFw#kX2kITI",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Playlist Page"
     }
   ]
 }
