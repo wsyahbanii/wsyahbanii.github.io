@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YC9Z1M9G2D');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROFILE // WAHYU SYAHBANI</title>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YC9Z1M9G2D');
+    </script>
     
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
 
+    <!-- LOADER -->
     <div class="loader">
         <div class="loader-text">loading profile...</div>
     </div>
 
+    <!-- MAIN CONTAINER -->
     <div class="container">
+        
+        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="top">
                 <a href="../index.html" class="back-link">&larr; RETURN TO ARCHIVE</a>
@@ -46,9 +52,10 @@
             </div>
         </aside>
 
+        <!-- MAIN CONTENT (ABOUT FEED) -->
         <main class="about-feed">
 
-
+            <!-- BIO SECTION -->
             <div class="bio-text reveal-element">
                 <h2 class="section-title">THE OBSERVER</h2>
                 <p>
@@ -62,6 +69,7 @@
                 </p>
             </div>
 
+            <!-- SPECS GRID -->
             <div class="specs-grid reveal-element">
                 <div class="spec-item">
                     <h3>FOCUS</h3>
@@ -77,13 +85,13 @@
                 </div>
             </div>
 
-            <!-- BAGIAN CONTACT ME MULAI -->
+            <!-- CONTACT SECTION -->
             <div class="contact-section reveal-element">
                 <h2 class="section-title">TRANSMISSION // CONTACT</h2>
                 <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 30px;">
-                        Leave a message, feedback, or just a quick note. This message will be sent directly to my inbox.                </p>
+                    Leave a message, feedback, or just a quick note. This message will be sent directly to my inbox.
+                </p>
                 
-                <!-- Ganti action URL dengan endpoint Formspree Anda -->
                 <form id="contactForm" action="https://formspree.io/f/mdabzwvn" method="POST" class="contact-form">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
@@ -98,10 +106,12 @@
                 </form>
             </div>
 
+            <!-- QUOTE BOX -->
             <div class="quote-box reveal-element">
                 "We are just static noise in a beautiful universe."
             </div>
 
+            <!-- FOOTER -->
             <footer>
                 <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
                     // SYSTEM STATUS: ONLINE //
@@ -111,7 +121,7 @@
         </main>
     </div>
 
-    <!-- KODE POP-UP NOTIFIKASI -->
+    <!-- POP-UP NOTIFIKASI FORM -->
     <div id="successPopup" class="popup-overlay">
         <div class="popup-box">
             <h3>TRANSMISSION SENT</h3>
@@ -120,8 +130,10 @@
         </div>
     </div>
 
+    <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
 
+    <!-- JAVASCRIPT -->
     <script src="../js/about.js"></script>
 </body>
 </html>
