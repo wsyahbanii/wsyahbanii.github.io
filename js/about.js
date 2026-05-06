@@ -1,6 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- 1. PROFILE IMAGE HOVER EFFECT ---
+// Semua kode dijalankan setelah HTML selesai dimuat
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* =========================================
+       1. PROFILE IMAGE HOVER EFFECT
+       ========================================= */
     const profileContainer = document.querySelector('.profile-image');
     
     if (profileContainer) {
@@ -31,7 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- 2. SCROLL REVEAL EFEK ---
+    /* =========================================
+       2. SCROLL REVEAL EFEK
+       ========================================= */
     const observerOptions = {
         threshold: 0.15 
     };
@@ -49,82 +54,81 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
+
+    /* =========================================
+       3. CUSTOM CURSOR LOGIC
+       ========================================= */
+    const cursor = document.querySelector('.custom-cursor');
+
+    if (cursor) {
+        // Kursor mengikuti pergerakan mouse
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Efek membesar saat hover pada elemen yang bisa diklik
+        const hoverElements = document.querySelectorAll('a, .image-frame, button, input, textarea, .cover-wrapper');
+        
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+        });
+    }
+
+
+    /* =========================================
+       4. FORM SUBMISSION (AJAX & POPUP)
+       ========================================= */
+    const contactForm = document.getElementById('contactForm');
+    const successPopup = document.getElementById('successPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            // Mencegah halaman pindah/reload bawaan HTML
+            e.preventDefault(); 
+
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerText;
+            
+            // Ubah teks tombol saat loading
+            submitBtn.innerText = 'MENGIRIM...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json' // Meminta Formspree tidak me-redirect
+                    }
+                });
+
+                if (response.ok) {
+                    // Jika sukses, munculkan Pop-up
+                    if (successPopup) successPopup.classList.add('show');
+                    contactForm.reset(); // Kosongkan isian form
+                } else {
+                    alert('Gagal mengirim sinyal. Silakan coba lagi.');
+                }
+            } catch (error) {
+                alert('Terjadi kesalahan jaringan/frekuensi.');
+            } finally {
+                // Kembalikan tombol seperti semula
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // Logika untuk menutup Pop-up
+    if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', () => {
+            if (successPopup) successPopup.classList.remove('show');
+        });
+    }
+
     console.log("About Page Loaded // System Ready");
 
-    
-});
-/* =========================================
-   CUSTOM CURSOR LOGIC
-   ========================================= */
-const cursor = document.querySelector('.custom-cursor');
-
-if (cursor) {
-    // Kursor mengikuti pergerakan mouse
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // Efek membesar saat hover pada elemen yang bisa diklik
-    // Ditambahkan tag button, input, dan textarea agar bereaksi di form Contact Me
-    const hoverElements = document.querySelectorAll('a, .image-frame, button, input, textarea, .cover-wrapper');
-    
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
-    });
-}
-
-
-/* =========================================
-   FORM SUBMISSION (AJAX & POPUP)
-   ========================================= */
-const contactForm = document.getElementById('contactForm');
-const successPopup = document.getElementById('successPopup');
-const closePopupBtn = document.getElementById('closePopup');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        // Mencegah halaman pindah/reload bawaan HTML
-        e.preventDefault(); 
-
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        const originalBtnText = submitBtn.innerText;
-        
-        // Ubah teks tombol saat loading
-        submitBtn.innerText = 'MENGIRIM...';
-        submitBtn.disabled = true;
-
-        try {
-            const response = await fetch(contactForm.action, {
-                method: contactForm.method,
-                body: new FormData(contactForm),
-                headers: {
-                    'Accept': 'application/json' // Meminta Formspree tidak me-redirect
-                }
-            });
-
-            if (response.ok) {
-                // Jika sukses, munculkan Pop-up
-                successPopup.classList.add('show');
-                contactForm.reset(); // Kosongkan isian form
-            } else {
-                alert('Gagal mengirim sinyal. Silakan coba lagi.');
-            }
-        } catch (error) {
-            alert('Terjadi kesalahan jaringan/frekuensi.');
-        } finally {
-            // Kembalikan tombol seperti semula
-            submitBtn.innerText = originalBtnText;
-            submitBtn.disabled = false;
-        }
-    });
-}
-
-// Logika untuk menutup Pop-up
-if (closePopupBtn) {
-    closePopupBtn.addEventListener('click', () => {
-        successPopup.classList.remove('show');
-    });
-}
-
+}); // <-- Penutup UTAMA DOMContentLoaded
