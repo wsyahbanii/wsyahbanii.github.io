@@ -8,7 +8,7 @@ A minimalist digital repository and portfolio built with a focus on brutalist ae
 
 | HOME ARCHIVE | USER PROFILE | PLAYLIST INTERFACE |
 | :---: | :---: | :---: |
-| ![Home](screenshots/Screenshot%202026-05-06%20150722.jpg) | ![Profile](screenshots/Screenshot%202026-05-06%20150806.png) | ![Playlist](screenshots/Screenshot%202026-05-06%20150744.jpg) |
+| ![Home](https://github.com/wsyahbanii/wsyahbanii.github.io/issues/1#issue-4391072958) | ![Profile](https://github.com/wsyahbanii/wsyahbanii.github.io/issues/3#issue-4391078169) | ![Playlist](https://github.com/wsyahbanii/wsyahbanii.github.io/issues/2#issue-4391076294) |
 
 ---
 
