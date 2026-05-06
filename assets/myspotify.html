@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLAYLIST // W // SYAHBANII</title>
-
+    <title>MY SPOTIFY // WAHYU SYAHBANI</title>
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -20,140 +20,230 @@
     <link rel="stylesheet" href="../css/about.css">
     
     <style>
+        /* --- STYLING KHUSUS HALAMAN SPOTIFY --- */
+        
+        /* Bagian Profil Spotify di Atas */
+        .spotify-profile {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--gray);
+            margin-bottom: 40px;
+        }
+        .spotify-profile img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.4s ease;
+            border: 1px solid var(--gray);
+        }
+        .spotify-profile:hover img {
+            filter: grayscale(0%);
+        }
+        .spotify-info h2 {
+            font-family: var(--font-header);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .spotify-info a {
+            color: #00fff9; /* Warna cyan glitch agar senada */
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .spotify-info a:hover {
+            color: var(--text);
+            text-decoration: underline;
+        }
+
+        /* Bagian Grid Playlist */
         .playlist-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-top: 20px;
         }
-        .spotify-card {
-            background: transparent;
+        .playlist-card {
             border: 1px solid var(--gray);
             padding: 20px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
         }
-        .spotify-card:hover {
+        .playlist-card:hover {
             border-color: var(--text);
             transform: translateY(-5px);
         }
-        .playlist-art {
+        .cover-wrapper {
             width: 100%;
-            aspect-ratio: 1/1;
-            margin-bottom: 20px;
+            aspect-ratio: 1 / 1;
             overflow: hidden;
-            border: 1px solid var(--gray);
+            margin-bottom: 20px;
             position: relative;
+            display: block; /* Memastikan tag a memenuhi ruang */
         }
-        .playlist-art img {
+        .cover-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(120%);
-            transition: filter 0.5s ease, transform 0.5s ease;
+            filter: grayscale(100%) contrast(110%);
+            transition: all 0.5s ease;
         }
-        .spotify-card:hover .playlist-art img {
+        .playlist-card:hover .cover-wrapper img {
             filter: grayscale(0%) contrast(100%);
             transform: scale(1.05);
         }
-        .card-title {
+        .playlist-info h3 {
             font-family: var(--font-header);
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 1rem;
             margin-bottom: 10px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .card-desc {
-            font-size: 0.8rem;
-            color: var(--subtext);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        .listen-btn {
-            font-family: var(--font-header);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+        .playlist-info h3 a {
             color: var(--text);
             text-decoration: none;
-            border-top: 1px solid var(--gray);
-            padding-top: 15px;
-            display: inline-block;
             transition: color 0.3s ease;
         }
-        .spotify-card:hover .listen-btn {
-            color: #1DB954; /* Spotify Green untuk aksen saat dihover */
+        .playlist-card:hover .playlist-info h3 a {
+            color: #1DB954; /* Spotify Green saat dihover */
+        }
+        .playlist-info p {
+            font-size: 0.85rem;
+            color: var(--subtext);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .playlist-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="loader"><div class="loader-text">tuning frequencies...</div></div>
+    <div class="loader">
+        <div class="loader-text">loading audio signals...</div>
+    </div>
 
     <div class="container">
         <aside class="sidebar">
             <div class="top">
-                <a href="../index.html" class="back-link">&larr; RETURN TO ARCHIVE</a>
+                <a href="../index.html" class="back-link">← RETURN TO ARCHIVE</a>
                 <br><br><br>
+                
                 <div class="logo">WS</div>
                 <br>
                 <div class="glitch-wrapper">
                     <h1 class="main-title glitch" data-text="PLAYLIST">PLAYLIST</h1>
                 </div>
             </div>
+
             <div class="social-links">
                 <a href="about.html">About Me -></a>
             </div>
         </aside>
 
         <main class="about-feed">
+            
+            <div class="spotify-profile reveal-element">
+                <img src="https://i.scdn.co/image/ab6775700000ee85b65a27ccf87ce7f6806b9fa6" alt="Profile Spotify">
+                <div class="spotify-info">
+                    <h2>WSYAHBANII</h2>
+                    <a href="https://open.spotify.com/user/31pxtsr6vblrjuep2jhn7ieaxeeu?si=c6a7401cd23e444f" target="_blank">LISTEN ON SPOTIFY &nearr;</a>
+                </div>
+            </div>
+
+            <div class="bio-text reveal-element">
+                <h2 class="section-title">AUDIO ARCHIVE</h2>
+                <p>
+                    A collection of sounds, noise, and melodies that accompany the creative process. Each playlist represents a specific phase and mood.
+                </p>
+            </div>
+
             <div class="playlist-grid reveal-element">
                 
-                <div class="spotify-card">
-                    <div class="playlist-art">
-                        <img src="../img/oliver.png" alt="Oliver Was Sick"> 
+                <div class="playlist-card">
+                    <a href="https://open.spotify.com/playlist/5l43ljTOKRkHuaqIXsclFi?si=beff572d9b5a419b" target="_blank" class="cover-wrapper">
+                        <img src="../img/spotify/cover1.png" alt="Oliver Was Sick">
+                    </a>
+                    <div class="playlist-info">
+                        <h3><a href="https://open.spotify.com/playlist/5l43ljTOKRkHuaqIXsclFi?si=beff572d9b5a419b" target="_blank">OLIVER WAS SICK &nearr;</a></h3>
+                        <p>A raw, unfiltered collection of live energies and distorted vocals. This playlist captures the chaotic emotion of a crowded room where the music is loud and the feelings are heavy. Perfect for nights when you just need to scream along and let the static take over.</p>
                     </div>
-                    <h3 class="card-title">OLIVER WAS SICK &#x2197;</h3>
-                    <p class="card-desc">A collection of emotional distortions and haunting melodies. Perfect for keeping you company in the middle of the night when your mind is too noisy.</p>
-                    <a href="#" target="_blank" class="listen-btn">LISTEN NOW</a>
                 </div>
 
-                <div class="spotify-card">
-                    <div class="playlist-art">
-                        <img src="../img/deathbat.png" alt="Dancing with the Deathbat">
+                <div class="playlist-card">
+                    <a href="https://open.spotify.com/playlist/6OwpVtAosCd2yLoEnPir41?si=20d915a6c99247bf" target="_blank" class="cover-wrapper">
+                        <img src="../img/spotify/cover2.png" alt="Dancing with the Deathbat">
+                    </a>
+                    <div class="playlist-info">
+                        <h3><a href="https://open.spotify.com/playlist/6OwpVtAosCd2yLoEnPir41?si=20d915a6c99247bf" target="_blank">DANCING WITH THE DEATHBAT &nearr;</a></h3>
+                        <p>Macabre beauty meets heavy, relentless rhythms. A juxtaposition of delicate melodies and bone-crushing riffs. Turn this up when you need to channel pure adrenaline, embrace the grit, and face your deadlines—or your demons—head-on.</p>
                     </div>
-                    <h3 class="card-title">DANCING WITH THE DEATHBAT &#x2197;</h3>
-                    <p class="card-desc">Aggressive guitar riffs and fast-paced drum beats. Pure energy to get your adrenaline pumping and keep you going when facing a deadline.</p>
-                    <a href="#" target="_blank" class="listen-btn">LISTEN NOW</a>
                 </div>
 
-                <div class="spotify-card">
-                    <div class="playlist-art">
-                        <img src="../img/medferit.png" alt="Med Fer It!">
+                <div class="playlist-card">
+                    <a href="https://open.spotify.com/playlist/3ZeCkIZ8u88c5eT3USH3hd?si=ebfa9db1b74e4085" target="_blank" class="cover-wrapper">
+                        <img src="../img/spotify/cover3.png " alt="Med Fer It!">
+                    </a>
+                    <div class="playlist-info">
+                        <h3><a href="https://open.spotify.com/playlist/3ZeCkIZ8u88c5eT3USH3hd?si=ebfa9db1b74e4085" target="_blank">MED FER IT! &nearr;</a></h3>
+                        <p>Stripped-down acoustics and atmospheric indie anthems lost in the fog. It's a solitary journey through cold mornings and introspective thoughts. Press play for those moments when you want to embrace the grey skies and quiet isolation.</p>
                     </div>
-                    <h3 class="card-title">MED FER IT! &#x2197;</h3>
-                    <p class="card-desc">Britpop swagger, gritty guitars, and an anthem of rebellion. A playlist to bring back that touch of distortion when your routine feels too monotonous.</p>
-                    <a href="#" target="_blank" class="listen-btn">LISTEN NOW</a>
                 </div>
 
-                <div class="spotify-card">
-                    <div class="playlist-art">
-                        <img src="../img/breathing.png" alt="Breathing in Silence">
+                <div class="playlist-card">
+                    <a href="https://open.spotify.com/playlist/5nOnD5VWfUCrlp75JRtkJ7?si=44b6f19962114052" target="_blank" class="cover-wrapper">
+                        <img src="../img/spotify/cover4.png" alt="Breathing in Silence">
+                    </a>
+                    <div class="playlist-info">
+                        <h3><a href="https://open.spotify.com/playlist/5nOnD5VWfUCrlp75JRtkJ7?si=44b6f19962114052" target="_blank">BREATHING IN SILENCE &nearr;</a></h3>
+                        <p>A soundproof space in audio form. A curated collection of minimalistic ambient tracks and slow, reverberating tones. Designed to help you step back, breathe deeply, and find a fleeting moment of peace away from the noise of the outside world.</p>
                     </div>
-                    <h3 class="card-title">BREATHING IN SILENCE &#x2197;</h3>
-                    <p class="card-desc">A soundproof space in audio form. A collection of slow tones and minimal ambient sounds for taking a breath and distancing from the noise of the outside world.</p>
-                    <a href="#" target="_blank" class="listen-btn">LISTEN NOW</a>
+                </div>
+
+                <div class="playlist-card">
+                    <a href="https://open.spotify.com/playlist/2Z7x0zTPQtWwzNF4ZdcVjh?si=9c9dd6c2d0a645f2" target="_blank" class="cover-wrapper">
+                        <img src="../img/spotify/cover5.png" alt="Chaos Feels Like Home">
+                    </a>
+                    <div class="playlist-info">
+                        <h3><a href="https://open.spotify.com/playlist/2Z7x0zTPQtWwzNF4ZdcVjh?si=9c9dd6c2d0a645f2" target="_blank">CHAOS FEELS LIKE HOME &nearr;</a></h3>
+                        <p>The soundtrack for late-night drives to nowhere. Eerie darkwave, heavy basslines, and lo-fi static that wrap around you like a familiar fog. A comforting embrace of the unpredictable, for when the dark feels safer than the light.</p>
+                    </div>
+                </div>
+
+                <div class="playlist-card">
+                    <a href="https://open.spotify.com/playlist/4XQ0kvMqTXnEmu6XNXpURM?si=5c7a9b8300474c25" target="_blank" class="cover-wrapper">
+                        <img src="../img/spotify/cover6.png" alt="When U Feeling High">
+                    </a>
+                    <div class="playlist-info">
+                        <h3><a href="https://open.spotify.com/playlist/4XQ0kvMqTXnEmu6XNXpURM?si=5c7a9b8300474c25" target="_blank">WHEN U FEELING HIGH &nearr;</a></h3>
+                        <p>Intoxicating beats and hazy, slow-jam rhythms. It’s the blurry memory of clinking glasses in a dimly lit room, where time slows down and a heavy bassline dictates the heartbeat. Hit play when the night takes over and reality starts to blur.</p>
+                    </div>
                 </div>
 
             </div>
 
-            <footer><p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">// SYSTEM STATUS: FREQUENCIES LOCKED //</p></footer>
+            <footer>
+                <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
+                    // SYSTEM STATUS: ONLINE //
+                </p>
+            </footer>
+
         </main>
     </div>
 
     <div class="custom-cursor"></div>
-    
+
     <script src="../js/about.js"></script>
 </body>
 </html>
