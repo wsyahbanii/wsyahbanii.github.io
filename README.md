@@ -6,15 +6,12 @@ A minimalist digital repository and portfolio built with a focus on brutalist ae
 
 ## 🖥️ PREVIEW
 
-| HOME ARCHIVE |
-| :---: |
-| ![Home](https://imgur.com/A4gdRzT) |
-| USER PROFILE |
-| :---: |
-| ![Profile](https://imgur.com/BvxLqpl) |
-| PLAYLIST INTERFACE |
-| :---: |
-| ![Playlist](https://imgur.com/LGRZUhB) |
+HOME ARCHIVE
+![Home](https://imgur.com/A4gdRzT)
+USER PROFILE
+![Profile](https://imgur.com/BvxLqpl)
+PLAYLIST INTERFACE
+![Playlist](https://imgur.com/LGRZUhB)
 
 ---
 
