@@ -6,9 +6,15 @@ A minimalist digital repository and portfolio built with a focus on brutalist ae
 
 ## 🖥️ PREVIEW
 
-| HOME ARCHIVE | USER PROFILE | PLAYLIST INTERFACE |
-| :---: | :---: | :---: |
-| ![Home](https://github.com/wsyahbanii/wsyahbanii.github.io/issues/1#issue-4391072958) | ![Profile](https://github.com/wsyahbanii/wsyahbanii.github.io/issues/3#issue-4391078169) | ![Playlist](https://github.com/wsyahbanii/wsyahbanii.github.io/issues/2#issue-4391076294) |
+| HOME ARCHIVE |
+| :---: |
+| ![Home](https://imgur.com/A4gdRzT) |
+| USER PROFILE |
+| :---: |
+| ![Profile](https://imgur.com/BvxLqpl) |
+| PLAYLIST INTERFACE |
+| :---: |
+| ![Playlist](https://imgur.com/LGRZUhB) |
 
 ---
 
@@ -51,3 +57,22 @@ This project is built using a **"Vanilla First"** approach, ensuring high perfor
 │   └── about.js        # Form & Interaction logic for assets
 ├── img/                # Compressed visual assets & icons
 └── index.html          # Main Entry point
+```
+
+---
+
+# 🚀 DEPLOYMENT
+The archive is live and accessible via GitHub Pages:
+**wsyahbanii.github.io**
+
+---
+
+#👤 AUTHOR
+**Wahyu Syahbani**
+
+*Informatics Engineering Student at Pamulang University (4th Semester).*
+- **Focus**: UI/UX Design, Web Development, Learning Cybersecurity.
+- **Tools**: HTML, CSS, JavaScript, Python, MySQL.
+- **Base**: Jakarta, Indonesia.
+
+*"We are just static noise in a beautiful universe."*
