@@ -376,3 +376,17 @@ footer p { opacity: 0.5; letter-spacing: 2px; }
         border-left: none;
     }
 }
+/* =========================================
+   MATIKAN CUSTOM CURSOR DI MOBILE (TOUCH SCREEN)
+   ========================================= */
+@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+    /* 1. Sembunyikan lingkaran custom cursor */
+    .custom-cursor {
+        display: none !important;
+    }
+    
+    /* 2. Kembalikan kursor bawaan sistem (agar fungsi touch normal) */
+    * {
+        cursor: auto !important;
+    }
+}
