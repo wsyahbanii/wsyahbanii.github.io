@@ -6,12 +6,24 @@ A minimalist digital repository and portfolio built with a focus on brutalist ae
 
 ## 🖥️ PREVIEW
 
-HOME ARCHIVE
-<a href="//imgur.com/a/7etLAGJ">Home @wsyahbanii</a>
-USER PROFILE
-![Profile](https://imgur.com/BvxLqpl)
-PLAYLIST INTERFACE
-![Playlist](https://imgur.com/LGRZUhB)
+<table align="center">
+  <tr>
+    <td align="center"><strong>HOME ARCHIVE</strong></td>
+    <td align="center"><strong>USER PROFILE</strong></td>
+    <td align="center"><strong>PLAYLIST INTERFACE</strong></td>
+  </tr>
+  <tr>
+    <td>
+      <img width="600" alt="Home Archive" src="https://i.imgur.com/12zFJum.png" />
+    </td>
+    <td>
+      <img width="600" alt="User Profile" src="https://i.imgur.com/k0JDKGi.png" />
+    </td>
+    <td>
+      <img width="600" alt="Playlist Interface" src="https://i.imgur.com/V3y5aq3.png" />
+    </td>
+  </tr>
+</table>
 
 ---
 
