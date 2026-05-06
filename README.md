@@ -7,7 +7,7 @@ A minimalist digital repository and portfolio built with a focus on brutalist ae
 ## 🖥️ PREVIEW
 
 HOME ARCHIVE
-![Home](https://imgur.com/A4gdRzT)
+![Home](<blockquote class="imgur-embed-pub" lang="en" data-id="a/7etLAGJ"  ><a href="//imgur.com/a/7etLAGJ">Home @wsyahbanii</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>)
 USER PROFILE
 ![Profile](https://imgur.com/BvxLqpl)
 PLAYLIST INTERFACE
