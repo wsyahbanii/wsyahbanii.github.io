@@ -104,11 +104,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Aksi tombol ACCEPT
+// Aksi tombol ACCEPT
     if (btnAccept) {
         btnAccept.addEventListener('click', () => {
             setCookie("void_cookie_consent", "accepted", 30);
             banner.classList.remove('show');
+
+            // --- KODE PELACAK GOOGLE ANALYTICS (ACCEPT) ---
+            if (typeof gtag === 'function') {
+                gtag('event', 'cookie_accepted', {
+                    'event_category': 'Engagement',
+                    'event_label': 'Cookie Banner'
+                });
+                console.log("Analytics: Pengunjung menekan ACCEPT");
+            }
         });
     }
 
@@ -117,6 +126,15 @@ document.addEventListener('DOMContentLoaded', function() {
         btnDecline.addEventListener('click', () => {
             setCookie("void_cookie_consent", "declined", 30);
             banner.classList.remove('show');
+
+            // --- KODE PELACAK GOOGLE ANALYTICS (DECLINE) ---
+            if (typeof gtag === 'function') {
+                gtag('event', 'cookie_declined', {
+                    'event_category': 'Engagement',
+                    'event_label': 'Cookie Banner'
+                });
+                console.log("Analytics: Pengunjung menekan DECLINE");
+            }
         });
     }
-});
+}); // <-- Ini penutup document.addEventListener yang paling bawah
