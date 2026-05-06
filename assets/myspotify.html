@@ -1,154 +1,38 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YC9Z1M9G2D');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY SPOTIFY // WAHYU SYAHBANI</title>
+    <title>PROFILE // WAHYU SYAHBANI</title>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YC9Z1M9G2D');
+    </script>
     
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Menggunakan base CSS yang sama -->
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/about.css">
-    
-    <style>
-        /* --- STYLING KHUSUS HALAMAN SPOTIFY --- */
-        
-        /* Bagian Profil Spotify di Atas */
-        .spotify-profile {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--gray);
-            margin-bottom: 40px;
-        }
-        .spotify-profile img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.4s ease;
-            border: 1px solid var(--gray);
-        }
-        .spotify-profile:hover img {
-            filter: grayscale(0%);
-        }
-        .spotify-info h2 {
-            font-family: var(--font-header);
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-        .spotify-info a {
-            color: #00fff9; /* Warna cyan glitch agar senada */
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .spotify-info a:hover {
-            color: var(--text);
-            text-decoration: underline;
-        }
-
-        /* Bagian Grid Playlist */
-        .playlist-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        .playlist-card {
-            border: 1px solid var(--gray);
-            padding: 20px;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .playlist-card:hover {
-            border-color: var(--text);
-            transform: translateY(-5px);
-        }
-        .cover-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .cover-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(110%);
-            transition: all 0.5s ease;
-        }
-        .playlist-card:hover .cover-wrapper img {
-            filter: grayscale(0%) contrast(100%);
-            transform: scale(1.05);
-        }
-        .playlist-info h3 {
-            font-family: var(--font-header);
-            font-size: 1rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        .playlist-info h3 a {
-            color: var(--text);
-            text-decoration: none;
-        }
-        .playlist-info p {
-            font-size: 0.85rem;
-            color: var(--subtext);
-            line-height: 1.6;
-        }
-        /* =========================================
-   CUSTOM CURSOR (GLOBAL)
-   ========================================= */
-.custom-cursor {
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--text);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transition: transform 0.2s ease, background 0.2s ease;
-    mix-blend-mode: difference; /* Kursor berubah warna otomatis menembus background */
-}
-
-.cursor-hover {
-    transform: scale(3);
-    background: var(--text);
-}
-
-        /* Responsif untuk layar kecil */
-        @media (max-width: 768px) {
-            .playlist-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
 
+    <!-- LOADER -->
     <div class="loader">
-        <div class="loader-text">loading audio signals...</div>
+        <div class="loader-text">loading profile...</div>
     </div>
 
+    <!-- MAIN CONTAINER -->
     <div class="container">
+        
+        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="top">
                 <a href="../index.html" class="back-link">&larr; RETURN TO ARCHIVE</a>
@@ -157,97 +41,77 @@
                 <div class="logo">WS</div>
                 <br>
                 <div class="glitch-wrapper">
-                    <h1 class="main-title glitch" data-text="PLAYLIST">PLAYLIST</h1>
+                    <h1 class="main-title glitch" data-text="PROFILE">PROFILE</h1>
                 </div>
             </div>
 
             <div class="social-links">
-                <a href="about.html">About Me -></a>
+                <a href="https://www.instagram.com/wsyahbanii" target="_blank">Instagram -></a>
+                <a href="https://github.com/wsyahbanii" target="_blank">GitHub -></a>
+                <a href="https://www.linkedin.com/in/wsyahbanii" target="_blank">LinkedIn -></a>
             </div>
         </aside>
 
+        <!-- MAIN CONTENT (ABOUT FEED) -->
         <main class="about-feed">
-            
-            <!-- PROFIL SPOTIFY -->
-            <div class="spotify-profile reveal-element">
-                <!-- Ganti link gambar di bawah dengan foto profil Anda -->
-                <img src="https://i.scdn.co/image/ab6775700000ee85b65a27ccf87ce7f6806b9fa6" alt="Profile Spotify">
-                <div class="spotify-info">
-                    <h2>WSYAHBANII</h2>
-                    <!-- Masukkan link profil Spotify Anda pada href di bawah -->
-                    <a href="https://open.spotify.com/user/31pxtsr6vblrjuep2jhn7ieaxeeu?si=38693e68e8374717" target="_blank">LISTEN ON SPOTIFY &nearr;</a>
-                </div>
-            </div>
 
+            <!-- BIO SECTION -->
             <div class="bio-text reveal-element">
-                <h2 class="section-title">AUDIO ARCHIVE</h2>
+                <h2 class="section-title">THE OBSERVER</h2>
                 <p>
-                    A collection of sounds, noise, and melodies that accompany the creative process. Each playlist represents a specific phase and mood.
+                    I am an Informatics Engineering student at Pamulang University, currently in my 4th semester. I have a deep interest in programming, technology, and the creative arts. My journey involves exploring the intersection of technical logic and visual design to build impactful digital experiences.
+                </p>
+                <p>
+                    With a foundation in Computer and Network Engineering and professional experience in technical and logistics roles, I’ve developed a disciplined work ethic and a collaborative mindset. I thrive in fast-paced environments where continuous learning is key.
+                </p>
+                <p>
+                    I created this website as a medium to share my work, documentation of learning, and a place to develop with technology.
                 </p>
             </div>
 
-            <!-- GRID PLAYLIST -->
-            <div class="playlist-grid reveal-element">
-                
-                <!-- Playlist 1 -->
-                <div class="playlist-card">
-                    <a href="https://open.spotify.com/playlist/5l43ljTOKRkHuaqIXsclFi?si=2dee63f1db264d13" target="_blank" class="cover-wrapper">
-                        <!-- Ganti src dengan link gambar cover playlist -->
-                        <img src="../img/spotify/cover1.png" alt="Cover Playlist 1">
-                    </a>
-                    <div class="playlist-info">
-                        <h3><a href="https://open.spotify.com/playlist/5l43ljTOKRkHuaqIXsclFi?si=2dee63f1db264d13" target="_blank">OLIVER WAS SICK &nearr;</a></h3>
-                        <p>A collection of emotional distortions and haunting melodies. Perfect for keeping you company in the middle of the night when your mind is too noisy.</p>                    </div>
+            <!-- SPECS GRID -->
+            <div class="specs-grid reveal-element">
+                <div class="spec-item">
+                    <h3>FOCUS</h3>
+                    <p>UI/UX Design.<br>Web Development<br>Learning Cybersecurity</p>
                 </div>
-
-                <!-- Playlist 2 -->
-                <div class="playlist-card">
-                    <a href="https://open.spotify.com/playlist/6OwpVtAosCd2yLoEnPir41?si=4356c56d7d364187" target="_blank" class="cover-wrapper">
-                        <!-- Ganti src dengan link gambar cover playlist -->
-                        <img src="../img/spotify/cover2.png" alt="Cover Playlist 2">
-                    </a>
-                    <div class="playlist-info">
-                        <h3><a href="https://open.spotify.com/playlist/6OwpVtAosCd2yLoEnPir41?si=4356c56d7d364187" target="_blank">DANCING WITH THE DEATHBAT &nearr;</a></h3>
-                        <p>Aggressive guitar riffs and fast-paced drum beats. Pure energy to get your adrenaline pumping and keep you going when facing a deadline.</p>                    </div>
+                <div class="spec-item">
+                    <h3>TOOLS</h3>
+                    <p>Python<br>HTML/CSS<br>JavaScript<br>MySQL</p>
                 </div>
-                <div class="playlist-card">
-                    <a href="https://open.spotify.com/playlist/3ZeCkIZ8u88c5eT3USH3hd?si=e3aa2ae390ec4495" target="_blank" class="cover-wrapper">
-                        <!-- Ganti src dengan link gambar cover playlist -->
-                        <img src="../img/spotify/cover3.png" alt="Cover Playlist 3">
-                    </a>
-                    <div class="playlist-info">
-                        <h3><a href="https://open.spotify.com/playlist/3ZeCkIZ8u88c5eT3USH3hd?si=e3aa2ae390ec4495" target="_blank">MED FER IT! &nearr;</a></h3>
-                        <p>Britpop swagger, gritty guitars, and an anthem of rebellion. A playlist to bring back that touch of distortion when your routine feels too monotonous.</p>                    </div>
-                </div>
-                <div class="playlist-card">
-                    <a href="https://open.spotify.com/playlist/5nOnD5VWfUCrlp75JRtkJ7?si=f1f336b4bce144c5" target="_blank" class="cover-wrapper">
-                        <!-- Ganti src dengan link gambar cover playlist -->
-                        <img src="../img/spotify/cover4.png" alt="Cover Playlist 4">
-                    </a>
-                    <div class="playlist-info">
-                        <h3><a href="https://open.spotify.com/playlist/5nOnD5VWfUCrlp75JRtkJ7?si=f1f336b4bce144c5" target="_blank">BREATHING IN SILENCE &nearr;</a></h3>
-                        <p>A soundproof space in audio form. A collection of slow tones and minimal ambient sounds for taking a breath and distancing from the noise of the outside world.</p>                    </div>
-                </div>
-                <div class="playlist-card">
-                    <a href="https://open.spotify.com/playlist/2Z7x0zTPQtWwzNF4ZdcVjh?si=d191f9ed9c154608" target="_blank" class="cover-wrapper">
-                        <!-- Ganti src dengan link gambar cover playlist -->
-                        <img src="../img/spotify/cover5.png" alt="Cover Playlist 5">
-                    </a>
-                    <div class="playlist-info">
-                        <h3><a href="https://open.spotify.com/playlist/2Z7x0zTPQtWwzNF4ZdcVjh?si=d191f9ed9c154608" target="_blank">CHAOS FEELS LIKE HOME &nearr;</a></h3>
-                        <p>An irony in which noise actually brings peace. The embrace of raw distortion that makes us feel whole amidst the chaos.</p>                    </div>
-                </div>
-                <div class="playlist-card">
-                    <a href="https://open.spotify.com/playlist/4XQ0kvMqTXnEmu6XNXpURM?si=3a85454c6ef6446a" target="_blank" class="cover-wrapper">
-                        <!-- Ganti src dengan link gambar cover playlist -->
-                        <img src="../img/spotify/cover6.png" alt="Cover Playlist 6">
-                    </a>
-                    <div class="playlist-info">
-                        <h3><a href="https://open.spotify.com/playlist/4XQ0kvMqTXnEmu6XNXpURM?si=3a85454c6ef6446a" target="_blank">WHEN U FEELIN HIGH &nearr;</a></h3>
-                        <p>Exploration of psychedelic, *shoegaze*, and floating melodies. A special frequency for floating momentarily and releasing yourself from the gravity of reality.</p>                    </div>
+                <div class="spec-item">
+                    <h3>BASE</h3>
+                    <p>Jakarta,<br>Indonesia</p>
                 </div>
             </div>
 
+            <!-- CONTACT SECTION -->
+            <div class="contact-section reveal-element">
+                <h2 class="section-title">TRANSMISSION // CONTACT</h2>
+                <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 30px;">
+                    Leave a message, feedback, or just a quick note. This message will be sent directly to my inbox.
+                </p>
+                
+                <form id="contactForm" action="https://formspree.io/f/mdabzwvn" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="EMAIL // BALASAN (OPSIONAL)" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="PESAN // FREKUENSI..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">KIRIM SINYAL -></button>
+                </form>
+            </div>
+
+            <!-- QUOTE BOX -->
+            <div class="quote-box reveal-element">
+                "We are just static noise in a beautiful universe."
+            </div>
+
+            <!-- FOOTER -->
             <footer>
                 <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
                     // SYSTEM STATUS: ONLINE //
@@ -257,8 +121,19 @@
         </main>
     </div>
 
+    <!-- POP-UP NOTIFIKASI FORM -->
+    <div id="successPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h3>TRANSMISSION SENT</h3>
+            <p>The signal has been received. Your message has been lost in the void.</p>
+            <button id="closePopup" class="submit-btn">TUTUP</button>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
 
+    <!-- JAVASCRIPT -->
     <script src="../js/about.js"></script>
 </body>
 </html>
