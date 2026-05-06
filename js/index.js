@@ -74,9 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('cookie-banner');
-            const btnAccept = document.getElementById('accept-cookie');
-            const btnDecline = document.getElementById('decline-cookie');
-
+            const btnGotIt = document.getElementById('got-it-cookie');
     // Pastikan banner ada di HTML
     if (!banner) return; 
 
@@ -104,37 +102,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-// Aksi tombol ACCEPT
-    if (btnAccept) {
-        btnAccept.addEventListener('click', () => {
+    // Aksi tombol GOT IT
+    if (btnGotIt) {
+        btnGotIt.addEventListener('click', () => {
             setCookie("void_cookie_consent", "accepted", 30);
             banner.classList.remove('show');
 
-            // --- KODE PELACAK GOOGLE ANALYTICS (ACCEPT) ---
+            // --- KODE PELACAK GOOGLE ANALYTICS ---
             if (typeof gtag === 'function') {
                 gtag('event', 'cookie_accepted', {
                     'event_category': 'Engagement',
-                    'event_label': 'Cookie Banner'
+                    'event_label': 'Cookie Banner - Got It'
                 });
-                console.log("Analytics: Pengunjung menekan ACCEPT");
+                console.log("Analytics: Pengunjung menekan GOT IT");
             }
         });
     }
-
-    // Aksi tombol DECLINE
-    if (btnDecline) {
-        btnDecline.addEventListener('click', () => {
-            setCookie("void_cookie_consent", "declined", 30);
-            banner.classList.remove('show');
-
-            // --- KODE PELACAK GOOGLE ANALYTICS (DECLINE) ---
-            if (typeof gtag === 'function') {
-                gtag('event', 'cookie_declined', {
-                    'event_category': 'Engagement',
-                    'event_label': 'Cookie Banner'
-                });
-                console.log("Analytics: Pengunjung menekan DECLINE");
-            }
-        });
-    }
-}); // <-- Ini penutup document.addEventListener yang paling bawah
+}); // <-- Penutup document.addEventListener
