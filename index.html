@@ -25,6 +25,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -108,6 +109,13 @@
             <button id="got-it-cookie" class="btn-cookie accept">GOT IT</button>
         </div>
     </div>
+    
+    <!-- Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
 
     <!-- JAVASCRIPT -->
     <script src="js/index.js"></script>
