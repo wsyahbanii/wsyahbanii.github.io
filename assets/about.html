@@ -136,6 +136,26 @@
     <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
 
+    <script>
+        // Mengecek sinyal sukses dari PHP
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('status') === 'success') {
+            // Mengaktifkan popup bawaan Anda
+            const popup = document.getElementById('successPopup');
+            if (popup) {
+                popup.classList.add('show'); // Menambah class 'show' sesuai CSS Anda
+            }
+            
+            // Membersihkan URL
+            window.history.replaceState(null, null, window.location.pathname);
+        }
+    
+        // Fungsi tutup popup (mengikuti logika about.js Anda)
+        document.getElementById('closePopup')?.addEventListener('click', () => {
+            document.getElementById('successPopup').classList.remove('show');
+        });
+    </script>
+
     <!-- JAVASCRIPT -->
     <script src="../js/about.js"></script>
 </body>
