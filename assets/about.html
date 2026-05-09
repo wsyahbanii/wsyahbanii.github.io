@@ -95,19 +95,18 @@
                     Leave a message, feedback, or just a quick note. This message will be sent directly to my inbox.
                 </p>
                 
-                <form id="contactForm" action="https://system.wsyahbanii.my.id/api_wsyahbanii.php" method="POST" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="EMAIL // BALASAN (OPSIONAL)" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="4" placeholder="PESAN // FREKUENSI..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">KIRIM SINYAL -></button>
-                </form>
-            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="from_name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="reply_to" placeholder="EMAIL // BALASAN (OPSIONAL)" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="4" placeholder="PESAN // FREKUENSI..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="btnSubmit">KIRIM SINYAL -></button>
+            </form>
 
             <!-- QUOTE BOX -->
             <div class="quote-box reveal-element">
@@ -136,6 +135,12 @@
     <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+                emailjs.init("service_3ex2tct"); 
+        })();
+    </script>
     <script>
         // Mengecek sinyal sukses dari PHP
         const params = new URLSearchParams(window.location.search);
