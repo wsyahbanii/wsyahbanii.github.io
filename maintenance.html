@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WS // SYSTEM MAINTENANCE</title>
+    <title>WS // MAINTENANCE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500&family=Syncopate:wght@700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
         :root {
             --bg-color: #0a0a0a;
             --text-color: #ffffff;
-            --accent-color: #444;
+            --accent-color: #333;
             --highlight: #888;
         }
 
@@ -23,91 +23,97 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
             text-transform: uppercase;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Scanline Effect */
+        /* Efek Garis TV Jadul */
         body::after {
             content: " ";
-            position: absolute;
+            position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 10;
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
         }
 
         .container {
             border: 1px solid var(--accent-color);
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
+            padding: 30px;
+            width: 100%;
+            max-width: 550px;
             position: relative;
-            z-index: 3;
+            z-index: 5;
+            box-sizing: border-box;
         }
 
         .glitch {
             font-family: 'Syncopate', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: clamp(1.2rem, 5vw, 2rem); /* Responsif teks */
+            margin-bottom: 25px;
             letter-spacing: 4px;
-            position: relative;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 15px;
         }
 
-        .status-log {
+        .status-info {
             font-size: 0.75rem;
-            text-align: left;
             color: var(--highlight);
-            line-height: 1.6;
-            border-top: 1px solid var(--accent-color);
-            padding-top: 20px;
-            font-weight: 300;
+            line-height: 2;
+            margin-bottom: 25px;
         }
 
-        .blink {
-            animation: blinker 1s linear infinite;
-            color: #fff;
-        }
-
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
-
-        .loader-wrap {
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .progress-bar {
-            flex-grow: 1;
-            height: 4px;
+        /* Perbaikan Loading Bar */
+        .loader-container {
+            width: 100%;
+            height: 1px; /* Dibuat tipis agar brutalist look */
             background: #222;
             position: relative;
+            margin: 30px 0;
+            overflow: hidden;
         }
 
-        .progress-fill {
+        .loader-fill {
             position: absolute;
-            width: 30%;
             height: 100%;
+            width: 40%;
             background: #fff;
-            animation: move 1.5s infinite ease-in-out;
+            animation: slide 2s infinite ease-in-out;
         }
 
-        @keyframes move {
-            0% { left: 0; width: 10%; }
-            50% { width: 40%; }
-            100% { left: 100%; width: 10%; }
+        @keyframes slide {
+            0% { left: -40%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
         }
 
-        .terminal-text {
-            color: #666;
+        .message {
             font-family: monospace;
-            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 20px;
             display: block;
+            line-height: 1.5;
+        }
+
+        .footer-sig {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: var(--accent-color);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            .status-info {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -116,20 +122,22 @@
     <div class="container">
         <div class="glitch">MAINTENANCE_MODE</div>
         
-        <div class="status-log">
-            > STATUS: <span class="blink">OFFLINE</span><br>
+        <div class="status-info">
+            > STATUS: <span style="color: #fff;">OFFLINE</span><br>
             > TASK: OPTIMIZING_SYSTEM<br>
-            > PROGRESS: RESTRUCTURING_FILES...<br>
-            
-            <div class="loader-wrap">
-                <div class="progress-bar"><div class="progress-fill"></div></div>
-            </div>
+            > PROGRESS: RESTRUCTURING_FILES...
+        </div>
 
-            <span class="terminal-text">
-                Sabar ya ce esss!! 
-                <br><br>
-                -- W // SYAHBANII
-            </span>
+        <div class="loader-container">
+            <div class="loader-fill"></div>
+        </div>
+
+        <div class="message">
+            SABAR YA CE ESSS!! <br>
+        </div>
+
+        <div class="footer-sig">
+            -- W // SYAHBANII
         </div>
     </div>
 
