@@ -2,33 +2,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================================
+       0. LOADER LOGIC (Penting biar layar tidak blank)
+       ========================================= */
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500); // Waktu transisi fade-out
+        }, 800); // Waktu jeda sebelum loader hilang
+    }
+
+    /* =========================================
        1. PROFILE IMAGE HOVER EFFECT
        ========================================= */
     const profileContainer = document.querySelector('.profile-image');
     
     if (profileContainer) {
         const images = profileContainer.querySelectorAll('img');
-        
-        // Pastikan ada 2 gambar di dalam container
         if (images.length >= 2) {
-            const imgBase = images[0]; // Gambar Bawah
-            const imgHover = images[1]; // Gambar Atas
+            const imgBase = images[0]; 
+            const imgHover = images[1]; 
 
             profileContainer.addEventListener('mouseenter', () => {
-                // Munculkan gambar atas (img2)
                 imgHover.style.opacity = '1';
                 imgHover.style.transform = 'scale(1.05)';
-                
-                // Gambar bawah sedikit zoom juga biar seragam
                 imgBase.style.transform = 'scale(1.05)';
             });
 
             profileContainer.addEventListener('mouseleave', () => {
-                // Sembunyikan gambar atas
                 imgHover.style.opacity = '0';
                 imgHover.style.transform = 'scale(1)';
-
-                // Kembalikan gambar bawah ke normal
                 imgBase.style.transform = 'scale(1)';
             });
         }
@@ -44,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('visible'); // Pastikan di CSS pakai class .visible
             }
         });
     }, observerOptions);
@@ -54,39 +59,33 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-
     /* =========================================
        3. CUSTOM CURSOR LOGIC
        ========================================= */
     const cursor = document.querySelector('.custom-cursor');
 
     if (cursor) {
-        // Kursor mengikuti pergerakan mouse
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Efek membesar saat hover pada elemen yang bisa diklik
         const hoverElements = document.querySelectorAll('a, .image-frame, button, input, textarea, .cover-wrapper');
-        
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
         });
     }
 
-
     /* =========================================
-       4. FORM SUBMISSION (AJAX & POPUP)
+       4. FORM SUBMISSION (EMAILJS & POPUP)
        ========================================= */
-document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const btnSubmit = document.getElementById('btnSubmit');
     const successPopup = document.getElementById('successPopup');
     const closePopup = document.getElementById('closePopup');
 
-    if (contactForm) {
+    if (contactForm && btnSubmit) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -96,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSubmit.disabled = true;
 
             // Kirim via EmailJS
-            // Ganti 'YOUR_SERVICE_ID' dan 'YOUR_TEMPLATE_ID' sesuai dashboard EmailJS
             emailjs.sendForm('service_3ex2tct', 'template_a7hclel', this)
                 .then(() => {
                     // Berhasil: Munculkan popup buatanmu
