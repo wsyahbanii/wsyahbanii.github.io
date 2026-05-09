@@ -132,3 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("About Page Loaded // System Ready");
 
 }); // <-- Penutup UTAMA DOMContentLoaded
+fetch('https://system.wsyahbanii.my.id/api_wsyahbanii.php', {
+    method: 'POST',
+    // Tambahkan ini jika perlu
+    mode: 'cors', 
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
