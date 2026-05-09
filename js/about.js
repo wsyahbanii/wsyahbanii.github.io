@@ -80,64 +80,46 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        4. FORM SUBMISSION (AJAX & POPUP)
        ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
+    const btnSubmit = document.getElementById('btnSubmit');
     const successPopup = document.getElementById('successPopup');
-    const closePopupBtn = document.getElementById('closePopup');
+    const closePopup = document.getElementById('closePopup');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            // Mencegah halaman pindah/reload bawaan HTML
-            e.preventDefault(); 
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalBtnText = submitBtn.innerText;
-            
-            // Ubah teks tombol saat loading
-            submitBtn.innerText = 'MENGIRIM...';
-            submitBtn.disabled = true;
+            // Efek Brutalist: Ubah tombol jadi loading state
+            const originalText = btnSubmit.innerText;
+            btnSubmit.innerText = "MENGIRIM...";
+            btnSubmit.disabled = true;
 
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: contactForm.method,
-                    body: new FormData(contactForm),
-                    headers: {
-                        'Accept': 'application/json' // Meminta Formspree tidak me-redirect
+            // Kirim via EmailJS
+            // Ganti 'YOUR_SERVICE_ID' dan 'YOUR_TEMPLATE_ID' sesuai dashboard EmailJS
+            emailjs.sendForm('service_3ex2tct', 'template_a7hclel', this)
+                .then(() => {
+                    // Berhasil: Munculkan popup buatanmu
+                    if (successPopup) {
+                        successPopup.classList.add('show');
                     }
+                    contactForm.reset();
+                }, (error) => {
+                    // Gagal
+                    alert("TRANSMISSION FAILED: " + JSON.stringify(error));
+                })
+                .finally(() => {
+                    // Kembalikan tombol ke semula
+                    btnSubmit.innerText = originalText;
+                    btnSubmit.disabled = false;
                 });
-
-                if (response.ok) {
-                    // Jika sukses, munculkan Pop-up
-                    if (successPopup) successPopup.classList.add('show');
-                    contactForm.reset(); // Kosongkan isian form
-                } else {
-                    alert('Gagal mengirim sinyal. Silakan coba lagi.');
-                }
-            } catch (error) {
-                alert('Terjadi kesalahan jaringan/frekuensi.');
-            } finally {
-                // Kembalikan tombol seperti semula
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
-            }
         });
     }
 
-    // Logika untuk menutup Pop-up
-    if (closePopupBtn) {
-        closePopupBtn.addEventListener('click', () => {
-            if (successPopup) successPopup.classList.remove('show');
+    // Logika tutup popup
+    if (closePopup && successPopup) {
+        closePopup.addEventListener('click', () => {
+            successPopup.classList.remove('show');
         });
     }
-
-    console.log("About Page Loaded // System Ready");
-
-}); // <-- Penutup UTAMA DOMContentLoaded
-fetch('https://system.wsyahbanii.my.id/api_wsyahbanii.php', {
-    method: 'POST',
-    // Tambahkan ini jika perlu
-    mode: 'cors', 
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-})
+});
