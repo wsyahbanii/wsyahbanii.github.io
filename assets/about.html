@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROFILE // WAHYU SYAHBANI</title>
 
-    <!-- GOOGLE ANALYTICS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,31 +15,22 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="img/ws.png">
     <link rel="icon" type="image/x-icon" href="img/ws.ico">
-    
-    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
 
-    <!-- LOADER -->
     <div class="loader">
         <div class="loader-text">loading profile...</div>
     </div>
 
-    <!-- MAIN CONTAINER -->
     <div class="container">
-        
-        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="top">
                 <a href="../index.html" class="back-link">&larr; RETURN TO ARCHIVE</a>
                 <br><br><br>
-                
                 <div class="logo">WS</div>
                 <br>
                 <div class="glitch-wrapper">
@@ -55,24 +45,14 @@
             </div>
         </aside>
 
-        <!-- MAIN CONTENT (ABOUT FEED) -->
         <main class="about-feed">
-
-            <!-- BIO SECTION -->
             <div class="bio-text reveal-element">
                 <h2 class="section-title">THE OBSERVER</h2>
-                <p>
-                    I am an Informatics Engineering student at Pamulang University, currently in my 4th semester. I have a deep interest in programming, technology, and the creative arts. My journey involves exploring the intersection of technical logic and visual design to build impactful digital experiences.
-                </p>
-                <p>
-                    With a foundation in Computer and Network Engineering and professional experience in technical and logistics roles, I’ve developed a disciplined work ethic and a collaborative mindset. I thrive in fast-paced environments where continuous learning is key.
-                </p>
-                <p>
-                    I created this website as a medium to share my work, documentation of learning, and a place to develop with technology.
-                </p>
+                <p>I am an Informatics Engineering student at Pamulang University, currently in my 4th semester. I have a deep interest in programming, technology, and the creative arts. My journey involves exploring the intersection of technical logic and visual design to build impactful digital experiences.</p>
+                <p>With a foundation in Computer and Network Engineering and professional experience in technical and logistics roles, I’ve developed a disciplined work ethic and a collaborative mindset. I thrive in fast-paced environments where continuous learning is key.</p>
+                <p>I created this website as a medium to share my work, documentation of learning, and a place to develop with technology.</p>
             </div>
 
-            <!-- SPECS GRID -->
             <div class="specs-grid reveal-element">
                 <div class="spec-item">
                     <h3>FOCUS</h3>
@@ -88,42 +68,38 @@
                 </div>
             </div>
 
-            <!-- CONTACT SECTION -->
             <div class="contact-section reveal-element">
                 <h2 class="section-title">TRANSMISSION // CONTACT</h2>
                 <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 30px;">
                     Leave a message, feedback, or just a quick note. This message will be sent directly to my inbox.
                 </p>
                 
-            <form id="contactForm" class="contact-form">
-                <div class="form-group">
-                    <input type="text" name="from_name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <input type="email" name="reply_to" placeholder="EMAIL // BALASAN (OPSIONAL)" autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="4" placeholder="PESAN // FREKUENSI..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="btnSubmit">KIRIM SINYAL -></button>
-            </form>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="from_name" placeholder="ALIAS // IDENTITAS" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="reply_to" placeholder="EMAIL // BALASAN (OPSIONAL)" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="PESAN // FREKUENSI..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="btnSubmit">KIRIM SINYAL -></button>
+                </form>
 
-            <!-- QUOTE BOX -->
-            <div class="quote-box reveal-element">
-                "We are just static noise in a beautiful universe."
+                <div class="quote-box reveal-element">
+                    "We are just static noise in a beautiful universe."
+                </div>
+
+                <footer>
+                    <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
+                        // SYSTEM STATUS: ONLINE //
+                    </p>
+                </footer>
             </div>
-
-            <!-- FOOTER -->
-            <footer>
-                <p style="text-align: center; color: #444; font-size: 0.8rem; margin-top: 100px;">
-                    // SYSTEM STATUS: ONLINE //
-                </p>
-            </footer>
-
         </main>
     </div>
 
-    <!-- POP-UP NOTIFIKASI FORM -->
     <div id="successPopup" class="popup-overlay">
         <div class="popup-box">
             <h3>TRANSMISSION SENT</h3>
@@ -132,36 +108,12 @@
         </div>
     </div>
 
-    <!-- CUSTOM CURSOR -->
     <div class="custom-cursor"></div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function(){
-                emailjs.init("vEkfJBukKK7hxdRW0"); 
-        })();
+        (function(){ emailjs.init("vEkfJBukKK7hxdRW0"); })();
     </script>
-    <script>
-        // Mengecek sinyal sukses dari PHP
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('status') === 'success') {
-            // Mengaktifkan popup bawaan Anda
-            const popup = document.getElementById('successPopup');
-            if (popup) {
-                popup.classList.add('show'); // Menambah class 'show' sesuai CSS Anda
-            }
-            
-            // Membersihkan URL
-            window.history.replaceState(null, null, window.location.pathname);
-        }
-    
-        // Fungsi tutup popup (mengikuti logika about.js Anda)
-        document.getElementById('closePopup')?.addEventListener('click', () => {
-            document.getElementById('successPopup').classList.remove('show');
-        });
-    </script>
-
-    <!-- JAVASCRIPT -->
     <script src="../js/about.js"></script>
 </body>
 </html>
