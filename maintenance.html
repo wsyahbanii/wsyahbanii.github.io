@@ -27,9 +27,10 @@
             text-transform: uppercase;
             padding: 20px;
             box-sizing: border-box;
+            position: relative;
         }
 
-        /* Efek Garis TV Jadul */
+        /* Scanlines */
         body::after {
             content: " ";
             position: fixed;
@@ -43,34 +44,39 @@
 
         .container {
             border: 1px solid var(--accent-color);
-            padding: 30px;
+            padding: 20px; /* Dikurangi paddingnya untuk mobile */
             width: 100%;
             max-width: 550px;
-            position: relative;
             z-index: 5;
             box-sizing: border-box;
+            text-align: left; /* Menghindari teks rata tengah yang aneh saat wrap */
         }
 
         .glitch {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(1.2rem, 5vw, 2rem); /* Responsif teks */
+            /* Perbaikan di sini: Clamp font-size agar responsif dan word-wrap */
+            font-size: clamp(1rem, 5vw, 1.8rem); 
             margin-bottom: 25px;
-            letter-spacing: 4px;
+            letter-spacing: 2px; /* Dikurangi sedikit agar lebih muat */
             border-bottom: 1px solid var(--accent-color);
             padding-bottom: 15px;
+            
+            /* Properti tambahan untuk mengatasi overflow teks panjang */
+            word-wrap: break-word; 
+            overflow-wrap: break-word;
+            hyphens: auto;
+            white-space: normal; /* Biarkan teks membungkus ke baris baru jika perlu */
         }
 
         .status-info {
-            font-size: 0.75rem;
+            font-size: 0.7rem; /* Diperkecil sedikit */
             color: var(--highlight);
-            line-height: 2;
-            margin-bottom: 25px;
+            line-height: 1.8;
         }
 
-        /* Perbaikan Loading Bar */
         .loader-container {
             width: 100%;
-            height: 1px; /* Dibuat tipis agar brutalist look */
+            height: 1px;
             background: #222;
             position: relative;
             margin: 30px 0;
@@ -80,66 +86,62 @@
         .loader-fill {
             position: absolute;
             height: 100%;
-            width: 40%;
+            width: 30%;
             background: #fff;
             animation: slide 2s infinite ease-in-out;
         }
 
         @keyframes slide {
-            0% { left: -40%; }
-            50% { left: 100%; }
+            0% { left: -30%; }
             100% { left: 100%; }
         }
 
         .message {
             font-family: monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #666;
             margin-top: 20px;
-            display: block;
-            line-height: 1.5;
         }
 
-        .footer-sig {
+        .footer {
             margin-top: 30px;
             font-size: 0.7rem;
             color: var(--accent-color);
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
+        /* Media Query untuk layar sangat kecil */
+        @media (max-width: 350px) {
+            .glitch {
+                font-size: 1.1rem; /* Ukuran minimum untuk layar sempit */
+                letter-spacing: 1px;
             }
-            .status-info {
-                font-size: 0.7rem;
+            .container {
+                padding: 15px;
             }
         }
     </style>
+    <script>
+        // Paksa hapus sisa service worker di device user
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+                for(let reg of regs) reg.unregister();
+            });
+        }
+    </script>
 </head>
 <body>
-
     <div class="container">
         <div class="glitch">MAINTENANCE_MODE</div>
-        
         <div class="status-info">
             > STATUS: <span style="color: #fff;">OFFLINE</span><br>
             > TASK: OPTIMIZING_SYSTEM<br>
             > PROGRESS: RESTRUCTURING_FILES...
         </div>
-
         <div class="loader-container">
             <div class="loader-fill"></div>
         </div>
-
-        <div class="message">
-            SABAR YA CE ESSS!! <br>
-        </div>
-
-        <div class="footer-sig">
-            -- W // SYAHBANII
-        </div>
+        <div class="message">SABAR YA CE ESSS!!</div>
+        <div class="footer">-- W // SYAHBANII</div>
     </div>
-
 </body>
 </html>
