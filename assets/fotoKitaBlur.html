@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foto Kita Blurr...</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #000000;
+    --surface: #060606;
+    --surface2: #0e0e0e;
+    --border: rgba(255,255,255,0.16);
+    --text: #ededed;
+    --text-muted: #6b6b6b;
+    --accent: #ededed;
+    --accent-glow: rgba(255,255,255,0.12);
+    --danger: #ff3b3b;
+    --success: #ededed;
+    --radius: 0px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px 60px;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  header h1::before {
+    content: '// ';
+    color: var(--text-muted);
+  }
+  header p {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  #status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    min-height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  #status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  #status-dot.loading { background: #ededed; animation: pulse 1.2s infinite; }
+  #status-dot.ready   { background: var(--success); }
+  #status-dot.peace   { background: #ededed; box-shadow: 0 0 8px var(--accent-glow); }
+  #status-dot.blur    { background: var(--danger); box-shadow: 0 0 8px rgba(255,59,59,.35); }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .camera-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    aspect-ratio: 4/3;
+  }
+
+  #video {
+    position: absolute;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    filter: grayscale(0.25) contrast(1.05);
+  }
+
+  #output-canvas {
+    position: absolute;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  #overlay-canvas {
+    position: absolute;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+
+  .blur-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: #000;
+    color: var(--danger);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border: 1px solid var(--danger);
+    border-radius: 999px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .blur-badge.visible { opacity: 1; }
+
+  .start-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--surface);
+    z-index: 10;
+  }
+  .start-overlay .icon {
+    font-size: 40px;
+    line-height: 1;
+    filter: grayscale(1);
+  }
+  .start-overlay p {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    max-width: 260px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--text);
+    background: transparent;
+    color: var(--text);
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, transform 0.1s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--text);
+    color: #000;
+  }
+  .btn-primary:hover { background: transparent; color: var(--text); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    width: 100%;
+    max-width: 640px;
+    align-items: center;
+  }
+
+  .control-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    flex: 1;
+    min-width: 160px;
+  }
+  .control-card label {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  input[type=range] {
+    flex: 1;
+    accent-color: var(--text);
+    height: 2px;
+    cursor: pointer;
+  }
+  .slider-val {
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: right;
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .toggle-row span {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .toggle {
+    width: 38px; height: 20px;
+    border-radius: 999px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .toggle.on { background: var(--text); border-color: var(--text); }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #ededed;
+    transition: transform 0.2s;
+  }
+  .toggle.on::after { background: #000; transform: translateX(16px); }
+
+  .howto {
+    margin-top: 28px;
+    width: 100%;
+    max-width: 640px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .howto h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+  }
+  .howto h3::before {
+    content: '// ';
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .step-num {
+    width: 20px; height: 20px;
+    border-radius: 0;
+    background: transparent;
+    border: 1px solid var(--border);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-muted);
+  }
+
+  .footer-tag {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>FOTO KITA BLURR..</h1>
+  <p>Gesture Detection System // Tahan ✌️ Untuk Blur Kamera</p>
+</header>
+
+<div id="status-bar">
+  <span id="status-dot" class="loading"></span>
+  <span id="status-text">Memuat model MediaPipe...</span>
+</div>
+
+<div class="camera-wrap" id="camera-wrap">
+  <video id="video" autoplay muted playsinline></video>
+  <canvas id="output-canvas"></canvas>
+  <canvas id="overlay-canvas"></canvas>
+  <div class="blur-badge" id="blur-badge">BLUR AKTIF</div>
+
+  <div class="start-overlay" id="start-overlay">
+    <div class="icon">✌️</div>
+    <p>Klik tombol di bawah untuk mulai kamera dan deteksi gesture peace</p>
+    <button class="btn btn-primary" id="start-btn">Mulai Kamera</button>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="control-card">
+    <label>KEKUATAN BLUR</label>
+    <div class="slider-row">
+      <input type="range" id="blur-strength" min="5" max="40" value="20" step="1">
+      <span class="slider-val" id="blur-val">20</span>
+    </div>
+  </div>
+
+  <div class="control-card">
+    <label>FRAME KONFIRMASI</label>
+    <div class="slider-row">
+      <input type="range" id="confirm-frames" min="1" max="10" value="2" step="1">
+      <span class="slider-val" id="confirm-val">2</span>
+    </div>
+  </div>
+
+  <div class="control-card">
+    <label>TUNJUKKAN LANDMARK</label>
+    <div class="toggle-row">
+      <span>Kerangka tangan</span>
+      <div class="toggle" id="debug-toggle"></div>
+    </div>
+  </div>
+</div>
+
+<div class="howto">
+  <h3>Cara pakai</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><span>Klik "Mulai Kamera" dan izinkan akses kamera</span></div>
+    <div class="step"><div class="step-num">2</div><span>Bentuk tanda ✌️ — telunjuk + tengah naik, dua jari lain terlipat</span></div>
+    <div class="step"><div class="step-num">3</div><span>Tahan beberapa frame → kamera langsung blur</span></div>
+    <div class="step"><div class="step-num">4</div><span>Turunkan tangan untuk menghentikan blur</span></div>
+  </div>
+</div>
+
+<script type="module">
+import { FilesetResolver, HandLandmarker } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/+esm";
+
+const video       = document.getElementById("video");
+const outCanvas   = document.getElementById("output-canvas");
+const overlayCanvas = document.getElementById("overlay-canvas");
+const outCtx      = outCanvas.getContext("2d");
+const overlayCtx  = overlayCanvas.getContext("2d");
+const statusDot   = document.getElementById("status-dot");
+const statusText  = document.getElementById("status-text");
+const startOverlay = document.getElementById("start-overlay");
+const startBtn    = document.getElementById("start-btn");
+const blurBadge   = document.getElementById("blur-badge");
+const blurInput   = document.getElementById("blur-strength");
+const blurVal     = document.getElementById("blur-val");
+const confirmInput = document.getElementById("confirm-frames");
+const confirmVal  = document.getElementById("confirm-val");
+const debugToggle = document.getElementById("debug-toggle");
+
+let handLandmarker = null;
+let running = false;
+let showDebug = false;
+let blurStrength = 20;
+let confirmFrames = 2;
+let streakPeace = 0;
+let holdFrames = 0;
+const FRAME_TAHAN = 6;
+
+const JARI = {
+  telunjuk: [8, 6],
+  tengah:   [12, 10],
+  manis:    [16, 14],
+  kelingking: [20, 18],
+};
+
+const KONEKSI = [
+  [0,1],[1,2],[2,3],[3,4],
+  [0,5],[5,6],[6,7],[7,8],
+  [5,9],[9,10],[10,11],[11,12],
+  [9,13],[13,14],[14,15],[15,16],
+  [13,17],[0,17],[17,18],[18,19],[19,20]
+];
+
+function setStatus(mode, text) {
+  statusDot.className = mode;
+  statusText.textContent = text;
+}
+
+function jariTerangkat(lm, ujung, pip) {
+  return lm[ujung].y < lm[pip].y;
+}
+
+function deteksiPeace(lm) {
+  const status = {};
+  for (const [nama, [ujung, pip]] of Object.entries(JARI)) {
+    status[nama] = jariTerangkat(lm, ujung, pip);
+  }
+  const peaceDasar =
+    status.telunjuk && status.tengah &&
+    !status.manis && !status.kelingking;
+  if (!peaceDasar) return false;
+
+  const pw = lm[0], pm = lm[9];
+  const ukuranTangan = Math.sqrt(
+    (pw.x - pm.x) ** 2 + (pw.y - pm.y) ** 2
+  );
+  if (ukuranTangan === 0) return true;
+
+  const t = lm[8], te = lm[12];
+  const jarakV = Math.sqrt(
+    (t.x - te.x) ** 2 + (t.y - te.y) ** 2
+  );
+  return jarakV > 0.25 * ukuranTangan;
+}
+
+function gambarLandmark(lm, W, H) {
+  overlayCtx.clearRect(0, 0, W, H);
+  overlayCtx.save();
+  overlayCtx.scale(-1, 1);
+  overlayCtx.translate(-W, 0);
+
+  for (const [a, b] of KONEKSI) {
+    const ax = lm[a].x * W, ay = lm[a].y * H;
+    const bx = lm[b].x * W, by = lm[b].y * H;
+    overlayCtx.beginPath();
+    overlayCtx.moveTo(ax, ay);
+    overlayCtx.lineTo(bx, by);
+    overlayCtx.strokeStyle = "rgba(255,255,255,0.5)";
+    overlayCtx.lineWidth = 1.5;
+    overlayCtx.stroke();
+  }
+  for (const pt of lm) {
+    overlayCtx.beginPath();
+    overlayCtx.arc(pt.x * W, pt.y * H, 4, 0, Math.PI * 2);
+    overlayCtx.fillStyle = "#6366f1";
+    overlayCtx.fill();
+  }
+  overlayCtx.restore();
+}
+
+function applyBlur(ctx, W, H, strength) {
+  ctx.save();
+  ctx.filter = `blur(${strength}px)`;
+  ctx.drawImage(outCanvas, 0, 0);
+  ctx.restore();
+}
+
+async function loadModel() {
+  setStatus("loading", "Memuat model MediaPipe...");
+  try {
+    const vision = await FilesetResolver.forVisionTasks(
+      "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm"
+    );
+    handLandmarker = await HandLandmarker.createFromOptions(vision, {
+      baseOptions: {
+        modelAssetPath:
+          "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task",
+        delegate: "GPU",
+      },
+      runningMode: "VIDEO",
+      numHands: 2,
+      minHandDetectionConfidence: 0.6,
+      minHandPresenceConfidence: 0.5,
+      minTrackingConfidence: 0.5,
+    });
+    setStatus("ready", "Model siap — klik Mulai Kamera");
+  } catch (e) {
+    setStatus("", "Gagal memuat model: " + e.message);
+  }
+}
+
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { width: 640, height: 480, facingMode: "user" },
+      audio: false,
+    });
+    video.srcObject = stream;
+    await video.play();
+    startOverlay.style.display = "none";
+    running = true;
+    loop();
+  } catch (e) {
+    setStatus("", "Kamera tidak bisa dibuka: " + e.message);
+  }
+}
+
+function loop() {
+  if (!running) return;
+  const W = video.videoWidth, H = video.videoHeight;
+  if (W === 0) { requestAnimationFrame(loop); return; }
+
+  outCanvas.width = W; outCanvas.height = H;
+  overlayCanvas.width = W; overlayCanvas.height = H;
+
+  outCtx.save();
+  outCtx.scale(-1, 1);
+  outCtx.translate(-W, 0);
+  outCtx.drawImage(video, 0, 0, W, H);
+  outCtx.restore();
+
+  const ts = performance.now();
+  const result = handLandmarker.detectForVideo(video, ts);
+
+  let peaceDideteksi = false;
+  if (result.landmarks && result.landmarks.length > 0) {
+    for (const lm of result.landmarks) {
+      if (deteksiPeace(lm)) peaceDideteksi = true;
+      if (showDebug) gambarLandmark(lm, W, H);
+    }
+  }
+  if (!showDebug) overlayCtx.clearRect(0, 0, W, H);
+
+  streakPeace = peaceDideteksi ? streakPeace + 1 : 0;
+  let blurAktif = false;
+  if (streakPeace >= confirmFrames) {
+    blurAktif = true;
+    holdFrames = FRAME_TAHAN;
+  } else if (holdFrames > 0) {
+    blurAktif = true;
+    holdFrames--;
+  }
+
+  if (blurAktif) {
+    outCtx.save();
+    outCtx.filter = `blur(${blurStrength}px)`;
+    outCtx.scale(-1, 1);
+    outCtx.translate(-W, 0);
+    outCtx.drawImage(video, 0, 0, W, H);
+    outCtx.restore();
+    blurBadge.classList.add("visible");
+    setStatus("blur", "Blur aktif — turunkan tangan untuk berhenti");
+  } else {
+    blurBadge.classList.remove("visible");
+    if (peaceDideteksi) {
+      setStatus("peace", `Peace terdeteksi! (${streakPeace}/${confirmFrames} frame)`);
+    } else {
+      setStatus("ready", "Kamera aktif — tunjukkan tanda ✌️");
+    }
+  }
+
+  requestAnimationFrame(loop);
+}
+
+blurInput.addEventListener("input", () => {
+  blurStrength = parseInt(blurInput.value);
+  blurVal.textContent = blurStrength;
+});
+
+confirmInput.addEventListener("input", () => {
+  confirmFrames = parseInt(confirmInput.value);
+  confirmVal.textContent = confirmFrames;
+});
+
+debugToggle.addEventListener("click", () => {
+  showDebug = !showDebug;
+  debugToggle.classList.toggle("on", showDebug);
+});
+
+startBtn.addEventListener("click", async () => {
+  if (!handLandmarker) {
+    setStatus("loading", "Model belum siap, tunggu sebentar...");
+    return;
+  }
+  await startCamera();
+});
+
+loadModel();
+</script>
+</body>
+</html>
