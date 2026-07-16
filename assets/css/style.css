@@ -556,7 +556,17 @@
     .nav-right{ flex-wrap: wrap; justify-content: center; gap: 16px; }
     .nav-links { gap: 16px; font-size: 12px; flex-wrap: wrap; justify-content: center; }
     section{ padding: 80px 6vw; }
-    .hero{position:fixed;height: auto;}
+    .hero{position:fixed;height: 100dvh;}
+
+    .hero-caption{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      min-height: 0;
+    }
     .m1 {top: 0%; left: 63%; height: 40%; transform-origin: left top; animation: scrollMobileDown 20s linear infinite;}
     .m2 {top: 0%; left: 110%; height: 40%; transform-origin: left top; animation: scrollMobileDown2 20s linear infinite;}
     @keyframes scrollMobileDown {
@@ -574,7 +584,7 @@
 
   @media (max-width: 480px) {
     .stat-block { grid-template-columns: 1fr; gap: 15px; }
-    .hero-caption { bottom: 30px; font-size: 10px; min-height: 58px; }
+    .hero-caption { font-size: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); }
     .scroll-cue { right: 20px; bottom: 90px; font-size: 16px; }
     .contact h2 { font-size: 36px; }
   }
