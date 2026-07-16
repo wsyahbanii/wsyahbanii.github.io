@@ -556,7 +556,7 @@
     .nav-right{ flex-wrap: wrap; justify-content: center; gap: 16px; }
     .nav-links { gap: 16px; font-size: 12px; flex-wrap: wrap; justify-content: center; }
     section{ padding: 80px 6vw; }
-    .hero{position:fixed;height: 100dvh;}
+    .hero{position:fixed;height: auto;min-height: 100dvh;}
 
     .hero-caption{
       position: fixed;
@@ -578,7 +578,15 @@
       100% {transform: rotate(90deg) translateX(-50%);}
     }
     .about, .work, .gallery, .contact {position: sticky;top: 0;}
-    .hero-figure img {max-width: 144%;height: auto;position: relative;left: 10%;}
+    .hero-figure {position: fixed;
+      left: 100%;
+      right: 0;
+      bottom: 0;
+      width: 200%;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      min-height: 0;
+    }
+    .hero-figure img {width: 130%;height: auto;position: fixed;left: 10%;bottom: 0;transform: rotate(-0.6deg);}
     .contact .big-link {font-size: clamp(16px, 6vw, 28px);word-break: break-all;}
   }
 
