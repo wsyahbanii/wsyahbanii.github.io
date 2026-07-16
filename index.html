@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wahyu Syahbani — Portfolio</title>
+
+<meta name="description" content="Portfolio Wahyu Syahbani — Informatics Engineering student at Universitas Pamulang, focused on front-end development and UI/UX design.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wahyu Syahbani — Portfolio">
+<meta property="og:description" content="Front-end developer & UI/UX enthusiast. Explore projects, sketches, and design experiments.">
+<meta property="og:image" content="assets/images/hero/main-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='12' fill='%23efe8d8'/%3E%3Ctext x='32' y='42' font-family='Arial, sans-serif' font-weight='700' font-size='26' fill='%231a1712' text-anchor='middle'%3EWS%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YC9Z1M9G2D"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YC9Z1M9G2D');
+</script>
+<script>
+  
+  (function(){
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#about">Skip to content</a>
+
+<nav>
+  <div class="nav-mark">WS</div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Project</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="marquee-row m1" aria-hidden="true">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+  </div>
+  <div class="marquee-row m2" aria-hidden="true">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+    <img class="marquee-img" src="assets/images/icons/main-text.webp" data-light="assets/images/icons/main-text.webp" data-dark="assets/images/icons/main-text-dark.webp" alt="" width="6300" height="400" decoding="async">
+  </div>
+
+  <div class="hero-figure">
+    <img id="heroFigure"
+        src="assets/images/hero/main-hero.webp"
+        data-light="assets/images/hero/main-hero.webp"
+        data-dark="assets/images/hero/main-hero-darkk.webp"
+        alt="Sketsa karakter dengan kacamata bulat, patch iron cross, dan gestur santai."
+        width="1024" height="1280"
+        fetchpriority="high"
+        decoding="async" />
+  </div>
+
+  <div class="hero-caption">Informatics Student — Front-End Development &amp; UI Design</div>
+
+  <div class="scroll-cue">
+    scroll
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <div class="eyebrow">About</div>
+    <h2 class="section-title">WHO<br>AM I?</h2>
+    <p>I am an Informatics Engineering student at Universitas Pamulang, currently in my fourth semester, with a focus on front-end development and interface design.</p>
+    <p>My approach centers on continuous learning through hands-on practice—translating design concepts into functional, well-structured code. I place equal value on visual clarity and technical execution, treating both as essential parts of the same process.</p>
+    <p>This portfolio reflects that process: a curated selection of academic projects, independent explorations, and design experiments that document my growth as a developer.</p>
+    <p class="quote">"Every line of code is a pen stroke—it can be rewritten, but never truly erased."</p>
+    <div class="tags">
+      <span>Front-End Web</span>
+      <span>HTML/CSS/JS</span>
+      <span>UI / UX</span>
+    </div>
+  </div>
+  <div class="stat-block">
+    <div class="stat" data-n="I"><b>2024</b><small>Informatics Engineering</small></div>
+    <div class="stat" data-n="II"><b>5+</b><small>Completed Projects</small></div>
+    <div class="stat" data-n="III"><b>Full-Stack</b><small>Front-End &amp; Back-End</small></div>
+    <div class="stat" data-n="IV"><b>UI/UX</b><small>Area of Interest</small></div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="eyebrow">PROJECT</div>
+  <h2 class="section-title">PORTFOLIO</h2>
+  <p class="section-intro">A selection of projects developed through coursework and independent study—spanning front-end interfaces, interactive web experiences, and creative coding experiments. Each project represents a step in an ongoing learning process.</p>
+  <div class="work-grid">
+    <a class="frame" href="https://wsyahbanii.github.io/chaos" target="_blank" rel="noopener">
+      <div class="frame-image">
+        <img src="assets/images/projects/project2.webp" alt="Graha Niskala" width="1000" height="750" loading="lazy" decoding="async">
+        <img src="assets/images/projects/project2-2.webp" alt="Graha Niskala Interface" width="1000" height="750" loading="lazy" decoding="async">
+      </div>
+
+      <div class="frame-tags">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Canvas API</span>
+        <span>Interactive</span>
+      </div>
+
+      <div class="frame-title">
+        <h3>GRAHA NISKALA</h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </div>
+
+      <p class="frame-desc">
+        An immersive browser-based horror experience featuring interactive scenes, atmospheric animations, layered visual effects, and real-time mouse interaction powered by the HTML5 Canvas API.
+      </p>
+    </a>
+    <a class="frame" href="https://wsyahbanii.github.io/capture" target="_blank" rel="noopener">
+      <div class="frame-image">
+        <img src="assets/images/projects/project1.webp" alt="VOID BOOTH" width="1000" height="750" loading="lazy" decoding="async">
+        <img src="assets/images/projects/project1-1.webp" alt="VOID BOOTH Camera" width="1000" height="750" loading="lazy" decoding="async">
+      </div>
+
+      <div class="frame-tags">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Canvas API</span>
+        <span>WebRTC</span>
+      </div>
+
+      <div class="frame-title">
+        <h3>VOID BOOTH</h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </div>
+
+      <p class="frame-desc">
+        A web-based photobooth application that uses WebRTC and the Canvas API to capture, decorate, preview, and export high-quality photos directly from the browser without requiring any installation.
+      </p>
+    </a>
+    <a class="frame" href="https://www.anakindo.co.id/" target="_blank" rel="noopener">
+      <div class="frame-image">
+        <img src="assets/images/projects/project3.webp" alt="ANAKINDO Company Profile" width="1000" height="746" loading="lazy" decoding="async">
+        <img src="assets/images/projects/project3-3.webp" alt="ANAKINDO Company Profile" width="1000" height="750" loading="lazy" decoding="async">
+      </div>
+
+      <div class="frame-tags">
+        <span>Corporate</span>
+        <span>Responsive</span>
+        <span>UI/UX</span>
+        <span>Company Profile</span>
+      </div>
+
+      <div class="frame-title">
+        <h3>ANAKINDO</h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </div>
+
+      <p class="frame-desc">
+        A modern corporate profile website developed for ANAKINDO, presenting the company's identity, services, business information, and digital presence through a clean, responsive, and user-focused interface.
+      </p>
+    </a>
+    <a class="frame" href="https://wsyahbanii.my.id/assets/fotoKitaBlur.html" target="_blank" rel="noopener">
+      <div class="frame-image">
+        <img src="assets/images/projects/project4.webp" alt="Foto Kita Blurr" width="1000" height="746" loading="lazy" decoding="async">
+        <img src="assets/images/projects/project4-4.webp" alt="Foto Kita Blurr Interface" width="1000" height="750" loading="lazy" decoding="async">
+      </div>
+
+      <div class="frame-tags">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>MediaPipe</span>
+        <span>Canvas API</span>
+        <span>Gesture Detection</span>
+        <span>WebRTC</span>
+      </div>
+
+      <div class="frame-title">
+        <h3>FOTO KITA BLURR</h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </div>
+
+      <p class="frame-desc">
+        A real-time gesture-controlled camera app that detects a peace sign using MediaPipe hand landmark tracking and automatically applies a live blur effect to the webcam feed via the Canvas API — complete with adjustable blur intensity, confirmation frame threshold, and optional hand skeleton visualization.
+      </p>
+    </a>
+    <a class="frame" href="https://wsyahbanii.my.id/toilet/" target="_blank" rel="noopener">
+      <div class="frame-image">
+        <img src="assets/images/projects/project5.webp" alt="Toilet" width="1000" height="746" loading="lazy" decoding="async">
+        <img src="assets/images/projects/project5-5.webp" alt="Toilet Interface" width="1000" height="750" loading="lazy" decoding="async">
+      </div>
+
+      <div class="frame-tags">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Personal Blog</span>
+        <span>Dynamic Sorting</span>
+      </div>
+
+      <div class="frame-title">
+        <h3>The Toilet</h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </div>
+
+      <p class="frame-desc">
+        A private, personal storytelling space built as a minimalist blog interface, featuring a dark themed UI, chronological sorting toggle (newest/oldest), and embedded external links — a quiet corner for sharing stories not told elsewhere.
+      </p>
+    </a>
+    <a class="frame" href="https://wsyahbanii.github.io/warmer-pocket-rpg/" target="_blank" rel="noopener">
+      <div class="frame-image">
+        <img src="assets/images/projects/project6.webp" alt="WARMER Pocket RPG Gameplay" width="1000" height="562" loading="lazy" decoding="async">
+        <img src="assets/images/projects/project-warmer2.webp" alt="WARMER Pocket RPG Map">
+      </div>
+
+      <div class="frame-tags">
+        <span>GDevelop</span>
+        <span>JavaScript</span>
+        <span>Pixel Art</span>
+        <span>Campus Simulation</span>
+        <span>Top-Down RPG</span>
+      </div>
+
+      <div class="frame-title">
+        <h3>WARMER Pocket RPG: UNPAM (Demo)</h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17L17 7M17 7H8M17 7V16"/>
+        </svg>
+      </div>
+
+      <p class="frame-desc">
+        A pixel-art top-down RPG demo set within the Universitas Pamulang campus, built with GDevelop — featuring a PokeMMO-style overworld, character movement, and exploration around a familiar academic setting reimagined as an adventure map.
+      </p>
+    </a>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="eyebrow">Gallery</div>
+  <h2 class="section-title">Sketchbook<br>Archive</h2>
+  <p class="section-intro">A collection of character studies and sketches developed alongside my technical work—reflecting the design sensibility that informs my approach to interfaces and visual systems.</p>
+  <div class="gallery-grid">
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art2.webp" alt="Studi karakter sketsa 01" width="1000" height="1204" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.01</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art.webp" alt="Studi karakter sketsa 02" width="1000" height="1504" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.02</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art3.webp" alt="Studi karakter sketsa 03" width="1000" height="1097" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.03</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art4.webp" alt="Studi karakter sketsa 04" width="1000" height="1429" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.04</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art6.webp" alt="Studi karakter sketsa 05" width="1000" height="1197" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.05</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art5.webp" alt="Studi karakter sketsa 06" width="1000" height="1446" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.06</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art7.webp" alt="Studi karakter sketsa 07" width="1000" height="671" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.07</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art8.webp" alt="Studi karakter sketsa 08" width="1000" height="1421" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.08</figcaption>
+    </figure>
+    <figure class="art-piece">
+      <img src="assets/images/gallery/art9.webp" alt="Studi karakter sketsa 09" width="1000" height="984" loading="lazy" decoding="async">
+      <figcaption>Studi Karakter — No.09</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="eyebrow" style="justify-content:center;">Contact</div>
+  <h2>GET IN TOUCH</h2>
+  <p class="section-intro" style="text-align:center;">I welcome opportunities for collaboration, feedback, or discussion—whether related to academic projects, freelance work, or design and development in general.</p>
+  <a class="big-link" href="mailto:wahyuusyahbanii@gmail.com">wahyuusyahbanii@gmail.com</a>
+
+  <div class="socials">
+    <a href="https://instagram.com/wsyahbanii">Instagram</a>
+    <a href="https://github.com/wsyahbanii" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Wahyu Syahbani</span>
+  <a class="back-to-top" href="#hero">Back to top ↑</a>
+</footer>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
