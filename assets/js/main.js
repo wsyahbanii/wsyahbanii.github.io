@@ -8,10 +8,14 @@ const allFrames = document.querySelectorAll('.frame-image');
     function applyThemeImage(img, theme){
       if (!img) return;
       var target = theme === 'dark' ? img.dataset.dark : img.dataset.light;
+      var targetSrcset = theme === 'dark' ? img.dataset.darkSrcset : img.dataset.lightSrcset;
       if (!target || target === img.getAttribute('src')) return;
 
       var probe = new Image();
-      probe.onload = function(){ img.src = target; };
+      probe.onload = function(){
+        img.src = target;
+        if (targetSrcset) { img.srcset = targetSrcset; }
+      };
       probe.onerror = function(){
         if (theme === 'dark') {
           console.warn('Gambar dark mode belum ditemukan di: ' + target + '. Menampilkan versi light sebagai fallback.');
@@ -135,3 +139,38 @@ allFrames.forEach(frame => {
   });
 
   navSections.forEach(sec => navObserver.observe(sec));
+
+  // Contact form -> opens WhatsApp with a pre-filled message.
+  // This is a static site (no backend), so this is the delivery method.
+  const WHATSAPP_NUMBER = '6282223517367'; // 082223517367 in international format
+
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('cf-name');
+      const emailInput = document.getElementById('cf-email');
+      const messageInput = document.getElementById('cf-message');
+      const note = document.getElementById('cf-note');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !email || !message) {
+        note.textContent = 'Mohon isi semua field dulu, ya.';
+        return;
+      }
+
+      const text =
+        `Halo Wahyu, perkenalkan saya ${name}.\n` +
+        `Email: ${email}\n\n` +
+        `Pesan:\n${message}`;
+
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+      note.textContent = 'Membuka WhatsApp...';
+      window.open(waUrl, '_blank', 'noopener');
+    });
+  }
