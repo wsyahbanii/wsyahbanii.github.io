@@ -7,16 +7,15 @@ Portfolio pribadi, dibangun dengan HTML, CSS, dan vanilla JavaScript (tanpa fram
 ```
 wsyahbanii-portfolio/
 ├── index.html
-├── assets/
-│   ├── css/style.css
-│   ├── js/main.js
-│   └── images/
-│       ├── hero/       -> gambar hero utama
-│       ├── projects/   -> thumbnail & preview project
-│       ├── gallery/    -> sketsa/art gallery
-│       └── icons/      -> aset SVG dekoratif (marquee, dsb)
-└── files/
-    └── cv-wahyu-syahbani.pdf
+└── assets/
+    ├── css/style.css
+    ├── js/main.js
+    └── images/
+        ├── hero/       -> gambar hero utama
+        ├── projects/   -> thumbnail & preview project
+        ├── gallery/    -> sketsa/art gallery
+        └── icons/      -> aset SVG dekoratif (marquee, dsb)
+
 ```
 
 ## Cara Menjalankan Lokal
