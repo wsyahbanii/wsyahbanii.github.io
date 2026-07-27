@@ -34,9 +34,6 @@
       gtag('js', new Date());
       gtag('config', 'G-YC9Z1M9G2D');
 
-      // Load GA script only after the page has finished loading,
-      // or as soon as the user interacts — whichever comes first.
-      // This keeps analytics off the critical rendering path.
       function loadGtagScript() {
         if (window.__gtagLoaded) return;
         window.__gtagLoaded = true;
