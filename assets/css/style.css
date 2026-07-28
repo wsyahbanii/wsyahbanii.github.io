@@ -27,6 +27,45 @@ html,body {transition: background-color 0.4s ease, color 0.4s ease;}
 body * {transition: background-color 0.4s ease, color 0.4s ease,
         border-color 0.4s ease, box-shadow 0.4s ease;}
 
+html.is-loading,
+html.is-loading body {
+    overflow: hidden;
+    height: 100%;
+}
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.preloader-logo {
+    width: 200px;
+    height: auto;
+    animation: preloader-pulse 2s ease-in-out infinite;
+}
+html[data-theme="dark"] .preloader-logo {
+    filter: invert(1);
+}
+@keyframes preloader-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .preloader-logo { animation: none; }
+}
+
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -125,6 +164,15 @@ nav {
     border-radius: 50%;
     background: var(--red);
     display: inline-block;
+}
+.nav-logo {
+    height: 50px;
+    width: auto;
+    display: block;
+    transition: filter 0.4s ease;
+}
+html[data-theme="dark"] .nav-logo {
+    filter: invert(1);
 }
 .nav-right {
     display: flex;

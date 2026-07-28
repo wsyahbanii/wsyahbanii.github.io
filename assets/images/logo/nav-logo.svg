@@ -1,11 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4636 4636">
-<style>
-  path { fill: #1a1a1a; }
-  @media (prefers-color-scheme: dark) {
-    path { fill: #ececec; }
-  }
-</style>
-<g transform="translate(0.000000,4636.000000) scale(0.100000,-0.100000)" fill="#1a1a1a">
+<g transform="translate(0.000000,4636.000000) scale(0.100000,-0.100000)" fill="currentColor">
 <path d="M23140 43803 c-19 -88 -254 -926 -311 -1112 -314 -1019 -920 -2094
 -1680 -2976 -378 -440 -646 -725 -882 -939 -103 -93 -187 -172 -187 -175 0 -8
 236 -269 417 -461 159 -169 250 -285 354 -452 257 -414 419 -884 493 -1433 29

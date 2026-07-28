@@ -53,15 +53,21 @@
     var saved = localStorage.getItem('theme');
     var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.add('is-loading');
   })();
 </script>
 </head>
 <body>
 
+<div id="preloader" aria-hidden="true">
+  <img src="assets/images/logo/nav-logo.svg" alt="" class="preloader-logo" width="200" height="200">
+</div>
+<noscript><style>#preloader{display:none !important;}</style></noscript>
+
 <a class="skip-link" href="#about">Skip to content</a>
 
 <nav>
-  <div class="nav-mark">WS</div>
+  <div class="nav-mark"><img src="assets/images/logo/nav-logo.svg" alt="Wahyu Syahbani" class="nav-logo"></div>
   <div class="nav-right">
     <div class="nav-links">
       <a href="#about">About</a>
@@ -414,6 +420,41 @@
   <a class="back-to-top" href="#hero">Back to top ↑</a>
 </footer>
 
+<script>
+  (function(){
+    var preloader = document.getElementById('preloader');
+    var html = document.documentElement;
+    var minDelay = 500;
+    var start = Date.now();
+    var done = false;
+
+    function reveal(){
+      if (done) return;
+      done = true;
+      var elapsed = Date.now() - start;
+      var wait = Math.max(0, minDelay - elapsed);
+      setTimeout(function(){
+        html.classList.remove('is-loading');
+        html.classList.add('is-loaded');
+        if (preloader) {
+          preloader.classList.add('hidden');
+          preloader.addEventListener('transitionend', function handler(){
+            if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+            preloader.removeEventListener('transitionend', handler);
+          });
+        }
+      }, wait);
+    }
+
+    if (document.readyState === 'complete') {
+      reveal();
+    } else {
+      window.addEventListener('load', reveal);
+    }
+    // Safety net: never let the preloader trap the page for more than 6s
+    setTimeout(reveal, 6000);
+  })();
+</script>
 <script src="assets/js/main.js"></script>
 
 </body>
