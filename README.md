@@ -30,3 +30,8 @@ Lalu buka http://localhost:8000
 ## Catatan
 - Semua gambar perlu ditaruh sesuai folder di atas (lihat atribut `src` di index.html untuk nama file yang diharapkan).
 - File `files/cv-wahyu-syahbani.pdf` perlu ditambahkan agar tombol "Download CV" tidak 404.
+
+## Keamanan
+Situs ini dilindungi oleh **Web Guard** — deteksi peretasan, reverse-IP penyerang, dan alert otomatis ke email + WhatsApp.
+Panduan lengkap: [`SECURITY-DEFENSE.md`](SECURITY-DEFENSE.md)
+Uji mesin deteksi: `node tools/guard-selftest.mjs`

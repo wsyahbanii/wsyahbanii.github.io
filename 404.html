@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>404 — Halaman Tidak Ditemukan</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: #0d0f13; color: #e8e8e8;
+    font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    padding: 24px;
+  }
+  .wrap { max-width: 560px; width: 100%; }
+  .code { font-size: clamp(72px, 18vw, 140px); line-height: 1; margin: 0; letter-spacing: -.04em; color: #2b3140; }
+  h1 { font-size: 20px; margin: 8px 0 12px; letter-spacing: .02em; }
+  p { color: #7c8798; font-size: 14px; line-height: 1.7; margin: 0 0 8px; }
+  .path {
+    margin-top: 18px; padding: 12px 14px; background: #14171d; border: 1px solid #232833;
+    border-radius: 8px; font-size: 12.5px; color: #9fb0c7; word-break: break-all;
+  }
+  a.btn {
+    display: inline-block; margin-top: 22px; padding: 11px 20px; border-radius: 8px;
+    background: #eff0f2; color: #0d0f13; text-decoration: none; font-weight: 700; font-size: 13px;
+  }
+  a.btn:hover { opacity: .85; }
+  .note { margin-top: 26px; font-size: 11.5px; color: #4d5666; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HONEYPOT 404 — setiap request ke path yang tidak ada akan
+     memicu Web Guard. Scanner (/.env, /wp-admin, /.git, dll)
+     otomatis terjaring di sini.
+     ============================================================ -->
+<script>
+  window.__GUARD_CTX = {
+    is404: true,
+    requestedPath: location.pathname + location.search + location.hash
+  };
+</script>
+
+<div class="wrap">
+  <p class="code">404</p>
+  <h1>Halaman tidak ditemukan.</h1>
+  <p>Alamat yang kamu tuju tidak tersedia di situs ini.</p>
+  <div class="path" id="askedPath"></div>
+  <a class="btn" href="/">Kembali ke beranda</a>
+  <p class="note">Setiap permintaan ke alamat yang tidak ada tercatat secara otomatis.</p>
+</div>
+
+<script>
+  (function () {
+    var el = document.getElementById('askedPath');
+    var p = (window.__GUARD_CTX && window.__GUARD_CTX.requestedPath) || location.pathname;
+    el.textContent = '› ' + decodeURIComponent(p);
+  })();
+</script>
+
+<script src="/assets/js/guard.config.js"></script>
+<script src="/assets/js/guard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+name = "ws-guard-relay"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# =====================================================================
+# VARIABEL NON-RAHASIA
+# =====================================================================
+[vars]
+SITE_NAME = "wsyahbanii.my.id"
+ALERT_EMAIL = "wahyuusyahbanii@gmail.com"
+ALERT_WHATSAPP = "628222517367"
+ALERT_FROM = "Web Guard <onboarding@resend.dev>"
+
+# 'callmebot' | 'fonnte' | 'twilio'  (kosongkan untuk nonaktifkan WhatsApp)
+WA_PROVIDER = "callmebot"
+
+# 'off' = hanya lapor, 'on' = blokir 403 di edge untuk scanner
+BLOCK_MODE = "off"
+
+# Origin yang boleh memanggil /ingest (kosongkan = semua)
+ALLOWED_ORIGINS = "https://wsyahbanii.my.id,https://wsyahbanii.github.io"
+
+# Path custom untuk ingest (opsional)
+INGEST_PATH = "/ingest"
+
+# =====================================================================
+# SECRET (JANGAN ditulis di sini — pakai `wrangler secret put`):
+#   SHARED_SECRET
+#   RESEND_API_KEY
+#   CALLMEBOT_API_KEY | FONNTE_TOKEN | TWILIO_SID / TWILIO_TOKEN / TWILIO_WA_FROM
+#   TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID
+# =====================================================================
