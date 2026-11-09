@@ -474,6 +474,8 @@
     if (!e.enabled || !e.publicKey) return Promise.resolve(false);
     return new Promise(function (resolve) {
       function go() {
+        // init WAJIB dipanggil sebelum send, apa pun jalur yang dipakai.
+        try { window.emailjs.init({ publicKey: e.publicKey }); } catch (initErr) {}
         try {
           window.emailjs.send(e.serviceId, e.templateId, {
             to_email: CFG.alertEmail,
@@ -495,7 +497,7 @@
       if (window.emailjs && window.emailjs.send) return go();
       var s = document.createElement('script');
       s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-      s.onload = function () { try { window.emailjs.init({ publicKey: e.publicKey }); } catch (err) {} go(); };
+      s.onload = go;
       s.onerror = function () { resolve(false); };
       document.head.appendChild(s);
     });
