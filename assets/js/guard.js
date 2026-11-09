@@ -215,7 +215,7 @@
    * 3. DETECTION RULES
    * ===================================================================== */
   var RE = {
-    sqli: /(\bunion\b[\s\S]{0,24}\bselect\b)|(\bselect\b[\s\S]{0,24}\bfrom\b)|(\bor\b\s+1\s*=\s*1)|('\s*or\s*')|(\bsleep\s*\()|(\bbenchmark\s*\()|(information_schema)|(\bconcat\s*\()|(waitfor\s+delay)|(\bpg_sleep\b)/i,
+    sqli: /(\bunion\b[\s\S]{0,24}\bselect\b)|(\bselect\b[\s\S]{0,24}\bfrom\b)|(\b(and|or)\b\s+\d+\s*=\s*\d+)|(\b(and|or)\b\s+'[^']*'\s*=\s*'[^']*')|('\s*(or|and)\s*')|(\bsleep\s*\()|(\bbenchmark\s*\()|(information_schema)|(\bconcat\s*\()|(waitfor\s+delay)|(\bpg_sleep\b)/i,
     xss: /(<script|<\/script|javascript:|vbscript:|onerror\s*=|onload\s*=|onfocus\s*=|onmouseover\s*=|alert\s*\(|prompt\s*\(|document\.cookie|document\.domain|%3cscript|%3csvg|\u003cscript)/i,
     lfi: /(\.\.\/|\.\.\\|%2e%2e%2f|%2e%2e\/|\/etc\/passwd|\/etc\/shadow|\/proc\/self|php:\/\/|file:\/\/|data:text\/html|expect:\/\/|zip:\/\/)/i,
     cmdi: /(?:[;|]|\|\||&&|`|\$\()\s*(cat|ls|whoami|id|uname|curl|wget|nc|bash|sh|powershell|cmd|ping|nslookup)\b/i,
@@ -223,7 +223,7 @@
     fileProbe: /(\/\.env|\/\.git|\/\.svn|wp-admin|wp-login|wp-content|xmlrpc\.php|phpmyadmin|pma\/|admin\.php|config\.php|setup\.php|install\.php|\/backup|\/dump|\.sql\b|\.bak\b|\.old\b|\.swp\b|\.DS_Store|composer\.json|composer\.lock|package-lock\.json|\/vendor\/|\/\.aws\/|\/\.ssh\/|\/\.kube\/|\/server-status|\/actuator)/i,
     ssrf: /(169\.254\.169\.254|metadata\.google|metadata\.azure|127\.0\.0\.1|0\.0\.0\.0|localhost|\[::1\]|file:\/\/\/)/i,
     openRedirect: /[?&](url|redirect|next|dest|destination|continue|return|target)=https?:\/\//i,
-    crlf: /(%0d%0a|%0a%0d|\r\n\s*Location:)/i,
+    crlf: /(%0d%0a|%0a%0d|\r\n|\r|\n|\x00|%00)/i,
     nosql: /\$where|\$ne\b|\$gt\b|\$regex\b|\{\s*"\$[a-z]+"/i,
     traversalEnc: /(%252e%252e|%c0%ae|%uff0e|\.\.%5c|%5c\.\.)/i,
     scannerUA: /(sqlmap|nikto|nmap|masscan|nessus|acunetix|netsparker|burpsuite|burp\b|dirbuster|gobuster|ffuf|wfuzz|hydra|metasploit|zgrab|nuclei|wpscan|joomscan|arachni|owasp|zaproxy|\bzap\b|skipfish|commix|xsstrike|dalfox|tplmap|jexboss|hercules|havij|whatweb|w3af|openvas|qualys|intruder|python-requests|python-urllib|pycurl|libwww-perl|scrapy|go-http-client|okhttp|java\/|curl\/|wget\/|lwp-|masscan|brutus|ncrack|medusa|patator|subfinder|amass|httpx\/|nuclei|nmap|netsparker|proxyman|httrack|wget)/i,
@@ -272,9 +272,9 @@
       ['cmdi', 'cmdi', 'Command Injection', 'critical', 60],
       ['ssti', 'ssti', 'SSTI / Log4Shell payload', 'critical', 55],
       ['ssrf', 'ssrf', 'SSRF probe', 'high', 35],
-      ['fileProbe', 'recon', 'Sensitive file/panel probing', 'high', 40],
+      ['fileProbe', 'recon', 'Sensitive file/panel probing', 'high', 55],
       ['openRedirect', 'openredir', 'Open Redirect probe', 'medium', 20],
-      ['crlf', 'crlf', 'CRLF / Header Injection', 'medium', 25],
+      ['crlf', 'crlf', 'CRLF / Header Injection', 'high', 55],
       ['nosql', 'nosql', 'NoSQL Injection', 'high', 35],
       ['traversalEnc', 'traversal', 'Encoded path traversal', 'high', 40]
     ];
@@ -309,7 +309,7 @@
     hits.push(now);
     lsSet(LS.hits, hits.slice(-50));
     if (hits.length >= CFG.thresholds.burst) {
-      hit('burst', 'Request burst (' + hits.length + ' in ' + (CFG.thresholds.burstWindowMs / 1000) + 's)', 'high', 45, hits.length + ' hits');
+      hit('burst', 'Request burst (' + hits.length + ' in ' + (CFG.thresholds.burstWindowMs / 1000) + 's)', 'high', 55, hits.length + ' hits');
     }
 
     if (ctx.honeypot) {
